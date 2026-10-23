@@ -73,42 +73,13 @@
     </div>
 
     <!-- 2. Header -->
-    <header class="bg-cream sticky top-0 z-40 border-b border-olive/10 transition-all duration-300">
+    <header class="bg-cream border-b border-olive/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
-                <!-- Left Nav -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">Shop</a>
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">New In</a>
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">Sale</a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button class="text-dark hover:text-olive focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
                     <a href="#" class="font-serif text-3xl md:text-4xl tracking-widest text-dark font-semibold">
                         BETTINA
-                    </a>
-                </div>
-
-                <!-- Right Icons -->
-                <div class="flex items-center space-x-5 md:space-x-6">
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors">
-                        <i class="fas fa-search text-lg"></i>
-                    </a>
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors hidden sm:block">
-                        <i class="far fa-user text-lg"></i>
-                    </a>
-                    <a href="#" class="text-dark hover:text-terracotta transition-colors relative">
-                        <i class="fas fa-shopping-bag text-lg"></i>
-                        <span class="absolute -top-1.5 -right-2 bg-terracotta text-cream text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
                     </a>
                 </div>
             </div>
@@ -116,9 +87,8 @@
     </header>
 
     <!-- 3. Main Hero -->
-    <!-- Note: Header is naturally above this, no absolute overlap -->
     <section class="relative h-[70vh] md:h-[85vh] w-full bg-dark">
-        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792721365/qp3pcwjekqimjyfd7wyz.jpg" alt="Colección Verano" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792721365/qp3pcwjekqimjyfd7wyz.jpg" alt="Colección Verano" class="w-full h-full object-cover object-top opacity-80 mix-blend-overlay">
         
         <div class="absolute inset-0 bg-black/20"></div> <!-- Subtle darkening overlay -->
         
@@ -130,7 +100,6 @@
             </a>
         </div>
     </section>
-
     <!-- 4. Product Grid -->
     <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -254,7 +223,7 @@
     <!-- 7. Footer -->
     <footer class="bg-olive text-cream pt-16 pb-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
+            <div class="grid grid-cols-1 mb-12">
                 
                 <!-- Brand Info -->
                 <div class="md:col-span-1">
@@ -269,47 +238,11 @@
                     </div>
                 </div>
 
-                <!-- Links 1 -->
-                <div>
-                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Shop</h5>
-                    <ul class="space-y-3 font-sans text-sm text-cream/80">
-                        <li><a href="#" class="hover:text-cream transition-colors">Novedades</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Enterizos</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Bikinis</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Ropa de Playa</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Sale</a></li>
-                    </ul>
-                </div>
-
-                <!-- Links 2 -->
-                <div>
-                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Servicio al Cliente</h5>
-                    <ul class="space-y-3 font-sans text-sm text-cream/80">
-                        <li><a href="#" class="hover:text-cream transition-colors">Contacto</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Envíos y Devoluciones</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Preguntas Frecuentes</a></li>
-                        <li><a href="#" class="hover:text-cream transition-colors">Guía de Tallas</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Contacto</h5>
-                    <ul class="space-y-3 font-sans text-sm text-cream/80">
-                        <li><i class="far fa-envelope mr-2"></i> hola@bettina.com</li>
-                        <li><i class="fab fa-whatsapp mr-2"></i> +57 300 000 0000</li>
-                        <li class="pt-4"><a href="#" class="underline hover:text-cream transition-colors">Chat en vivo</a></li>
-                    </ul>
-                </div>
             </div>
 
             <!-- Copyright -->
-            <div class="border-t border-cream/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-cream/60">
-                <p>&copy; 2024 Bettina Swimwear. Todos los derechos reservados.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-cream transition-colors">Términos y Condiciones</a>
-                    <a href="#" class="hover:text-cream transition-colors">Políticas de Privacidad</a>
-                </div>
+            <div class="border-t border-cream/20 pt-8 text-center text-xs font-sans text-cream/60">
+                <p>&copy; 2026 Bettina Swimwear. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
