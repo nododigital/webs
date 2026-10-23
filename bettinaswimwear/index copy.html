@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bettina Swimwear | Colección</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #f2efea; --text: #2c2c2c; --olive: #7a7758; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); }
+        
+        /* Navegación */
+        header { padding: 20px; text-align: center; position: sticky; top: 0; background: rgba(242, 239, 234, 0.9); z-index: 10; backdrop-filter: blur(5px); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; color: var(--text); }
+        .logo-i { font-family: 'Great Vibes', cursive; font-size: 2.2rem; margin: 0 -3px; transform: translateY(-2px); display: inline-block; }
+
+        /* Hero */
+        .hero { height: 80vh; position: relative; display: flex; align-items: flex-end; padding: 40px 20px; color: #fff; }
+        .hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%); z-index: -1; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 2px; font-weight: 400; }
+
+        /* Carrusel Horizontal */
+        .section-title { font-family: 'Playfair Display', serif; text-align: center; margin: 50px 0 20px; font-size: 1.8rem; }
+        .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 15px 40px; scrollbar-width: none; }
+        .slider::-webkit-scrollbar { display: none; }
+        .card { flex: 0 0 75vw; scroll-snap-align: center; }
+        @media(min-width:768px) { .slider { justify-content: center; } .card { flex: 0 0 300px; } }
+        
+        .card-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; margin-bottom: 10px; }
+        .card-title { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; font-weight: 500; }
+        .card-price { font-size: 0.85rem; color: var(--olive); margin-bottom: 15px; }
+        
+        .btn { display: block; width: 100%; padding: 12px; background: var(--text); color: #fff; text-align: center; text-decoration: none; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; }
+        .btn:hover { background: var(--olive); }
+
+        footer { text-align: center; padding: 40px 20px; font-size: 0.75rem; border-top: 1px solid #ddd; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">BETT<span class="logo-i">I</span>NA</a>
+    </header>
+
+    <section class="hero">
+        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792721365/qp3pcwjekqimjyfd7wyz.jpg" alt="Campaña">
+        <div>
+            <h1>Esencia Natural</h1>
+            <p style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">Nueva Temporada</p>
+        </div>
+    </section>
+
+    <h2 class="section-title">Catálogo</h2>
+    <div class="slider">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1574634534894-89d7576c8259?auto=format&fit=crop&w=600&q=80" class="card-img">
+            <div class="card-title">Bikini Arena</div>
+            <div class="card-price">$180.000 COP</div>
+            <button class="btn" onclick="comprar('Bikini Arena', '180.000')">Hacer Pedido</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=600&q=80" class="card-img">
+            <div class="card-title">Enterizo Oliva</div>
+            <div class="card-price">$220.000 COP</div>
+            <button class="btn" onclick="comprar('Enterizo Oliva', '220.000')">Hacer Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>WhatsApp: +57 300 000 0000 | @bettinaswimwear</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Pagos seguros por transferencia</p>
+    </footer>
+
+    <script>
+        function comprar(prod, precio) {
+            window.open(`https://wa.me/573000000000?text=Hola,%20quiero%20el%20${prod}%20(${precio}%20COP)`, '_blank');
+        }
+    </script>
+</body>
+</html>

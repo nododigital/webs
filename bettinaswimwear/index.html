@@ -3,80 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bettina Swimwear | Colección</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Bettina | Tienda Online</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F2EFEA',
+                        olive: '#7A795A',
+                        terracotta: '#8D5B3A',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root { --bg: #f2efea; --text: #2c2c2c; --olive: #7a7758; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); }
+        /* Custom Styles for smooth behaviors and specific overlays */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F2EFEA;
+            color: #333333;
+        }
         
-        /* Navegación */
-        header { padding: 20px; text-align: center; position: sticky; top: 0; background: rgba(242, 239, 234, 0.9); z-index: 10; backdrop-filter: blur(5px); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; color: var(--text); }
-        .logo-i { font-family: 'Great Vibes', cursive; font-size: 2.2rem; margin: 0 -3px; transform: translateY(-2px); display: inline-block; }
+        /* Hover effect for product cards */
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        .product-img {
+            transition: transform 0.5s ease;
+        }
 
-        /* Hero */
-        .hero { height: 80vh; position: relative; display: flex; align-items: flex-end; padding: 40px 20px; color: #fff; }
-        .hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%); z-index: -1; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 2px; font-weight: 400; }
-
-        /* Carrusel Horizontal */
-        .section-title { font-family: 'Playfair Display', serif; text-align: center; margin: 50px 0 20px; font-size: 1.8rem; }
-        .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 15px 40px; scrollbar-width: none; }
-        .slider::-webkit-scrollbar { display: none; }
-        .card { flex: 0 0 75vw; scroll-snap-align: center; }
-        @media(min-width:768px) { .slider { justify-content: center; } .card { flex: 0 0 300px; } }
-        
-        .card-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; margin-bottom: 10px; }
-        .card-title { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; font-weight: 500; }
-        .card-price { font-size: 0.85rem; color: var(--olive); margin-bottom: 15px; }
-        
-        .btn { display: block; width: 100%; padding: 12px; background: var(--text); color: #fff; text-align: center; text-decoration: none; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; }
-        .btn:hover { background: var(--olive); }
-
-        footer { text-align: center; padding: 40px 20px; font-size: 0.75rem; border-top: 1px solid #ddd; margin-top: 20px; }
+        /* Play button pulse */
+        .play-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 239, 234, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(242, 239, 234, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 239, 234, 0); }
+        }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased flex flex-col min-h-screen">
 
-    <header>
-        <a href="#" class="logo">BETT<span class="logo-i">I</span>NA</a>
+    <!-- 1. Top Announcement Bar -->
+    <div class="bg-olive text-cream text-xs md:text-sm font-medium text-center py-2 px-4 tracking-wide z-50 relative">
+        ENVÍOS GRATIS POR COMPRAS SUPERIORES A $150.000
+    </div>
+
+    <!-- 2. Header -->
+    <header class="bg-cream sticky top-0 z-40 border-b border-olive/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Left Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">Shop</a>
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">New In</a>
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors text-sm font-medium tracking-wider uppercase">Sale</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-dark hover:text-olive focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                    <a href="#" class="font-serif text-3xl md:text-4xl tracking-widest text-dark font-semibold">
+                        BETTINA
+                    </a>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="flex items-center space-x-5 md:space-x-6">
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors">
+                        <i class="fas fa-search text-lg"></i>
+                    </a>
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors hidden sm:block">
+                        <i class="far fa-user text-lg"></i>
+                    </a>
+                    <a href="#" class="text-dark hover:text-terracotta transition-colors relative">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="absolute -top-1.5 -right-2 bg-terracotta text-cream text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
-        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792721365/qp3pcwjekqimjyfd7wyz.jpg" alt="Campaña">
-        <div>
-            <h1>Esencia Natural</h1>
-            <p style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">Nueva Temporada</p>
+    <!-- 3. Main Hero -->
+    <!-- Note: Header is naturally above this, no absolute overlap -->
+    <section class="relative h-[70vh] md:h-[85vh] w-full bg-dark">
+        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792721365/qp3pcwjekqimjyfd7wyz.jpg" alt="Colección Verano" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+        
+        <div class="absolute inset-0 bg-black/20"></div> <!-- Subtle darkening overlay -->
+        
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+            <h2 class="font-sans text-cream text-sm md:text-base tracking-[0.3em] uppercase mb-4">Nueva Colección</h2>
+            <h1 class="font-serif text-5xl md:text-7xl text-cream mb-8 drop-shadow-md">Tierra & Mar</h1>
+            <a href="#" class="bg-terracotta hover:bg-[#7a4e32] text-cream px-8 py-3 rounded-sm font-medium tracking-wide transition-all duration-300 shadow-lg transform hover:-translate-y-1">
+                DESCUBRIR AHORA
+            </a>
         </div>
     </section>
 
-    <h2 class="section-title">Catálogo</h2>
-    <div class="slider">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1574634534894-89d7576c8259?auto=format&fit=crop&w=600&q=80" class="card-img">
-            <div class="card-title">Bikini Arena</div>
-            <div class="card-price">$180.000 COP</div>
-            <button class="btn" onclick="comprar('Bikini Arena', '180.000')">Hacer Pedido</button>
+    <!-- 4. Product Grid -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl md:text-4xl text-dark mb-3">Nuevos Ingresos</h2>
+            <div class="w-16 h-0.5 bg-olive mx-auto"></div>
         </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=600&q=80" class="card-img">
-            <div class="card-title">Enterizo Oliva</div>
-            <div class="card-price">$220.000 COP</div>
-            <button class="btn" onclick="comprar('Enterizo Oliva', '220.000')">Hacer Pedido</button>
-        </div>
-    </div>
 
-    <footer>
-        <p>WhatsApp: +57 300 000 0000 | @bettinaswimwear</p>
-        <p style="margin-top: 10px; opacity: 0.6;">Pagos seguros por transferencia</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            <!-- Product 1 -->
+            <div class="group product-card cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1564222256577-45e728f2c611?q=80&w=800&auto=format&fit=crop" alt="Traje de baño enterizo" class="product-img w-full h-full object-cover">
+                    <!-- Badges -->
+                    <span class="absolute top-2 left-2 bg-cream text-dark text-[10px] uppercase font-bold px-2 py-1 tracking-wider">Nuevo</span>
+                    <!-- Hover Actions -->
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                        <button class="bg-cream hover:bg-olive hover:text-cream text-dark w-11/12 py-2 text-sm font-medium transition-colors">VISTA RÁPIDA</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-sans text-sm md:text-base text-dark mb-1">Enterizo Siena</h3>
+                    <p class="font-serif text-terracotta font-semibold">$ 180.000</p>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="group product-card cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?q=80&w=800&auto=format&fit=crop" alt="Bikini Top" class="product-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                        <button class="bg-cream hover:bg-olive hover:text-cream text-dark w-11/12 py-2 text-sm font-medium transition-colors">VISTA RÁPIDA</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-sans text-sm md:text-base text-dark mb-1">Top Bikini Capri</h3>
+                    <p class="font-serif text-terracotta font-semibold">$ 95.000</p>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="group product-card cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1582806509653-3392cc68cb67?q=80&w=800&auto=format&fit=crop" alt="Bikini Bottom" class="product-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                        <button class="bg-cream hover:bg-olive hover:text-cream text-dark w-11/12 py-2 text-sm font-medium transition-colors">VISTA RÁPIDA</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-sans text-sm md:text-base text-dark mb-1">Bottom Capri</h3>
+                    <p class="font-serif text-terracotta font-semibold">$ 85.000</p>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="group product-card cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1522220458624-1c716e495626?q=80&w=800&auto=format&fit=crop" alt="Salida de baño" class="product-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                        <button class="bg-cream hover:bg-olive hover:text-cream text-dark w-11/12 py-2 text-sm font-medium transition-colors">VISTA RÁPIDA</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-sans text-sm md:text-base text-dark mb-1">Túnica Tulum</h3>
+                    <p class="font-serif text-terracotta font-semibold">$ 220.000</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-10">
+            <a href="#" class="inline-block border border-olive text-olive hover:bg-olive hover:text-cream px-8 py-2 text-sm uppercase tracking-wider transition-colors duration-300">
+                Ver todo
+            </a>
+        </div>
+    </section>
+
+    <!-- 5. Video Hero Block -->
+    <section class="relative h-[60vh] w-full bg-dark overflow-hidden cursor-pointer group">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" alt="Campaña Lifestyle" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000">
+        
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
+        
+        <!-- Play Icon -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-cream/90 rounded-full flex items-center justify-center play-btn text-dark pl-1">
+                <i class="fas fa-play text-2xl md:text-3xl"></i>
+            </div>
+        </div>
+
+        <!-- Title Bottom -->
+        <div class="absolute bottom-8 w-full text-center px-4">
+            <h3 class="font-serif text-2xl md:text-4xl text-cream tracking-wide">La Esencia del Verano</h3>
+            <p class="font-sans text-cream/80 text-sm mt-2 tracking-widest uppercase">Ver Campaña</p>
+        </div>
+    </section>
+
+    <!-- 6. Discount Block (50/50 Split) -->
+    <section class="flex flex-col md:flex-row w-full bg-cream">
+        <!-- Left: Content -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-12 md:p-20 lg:p-32 text-center order-2 md:order-1">
+            <h2 class="font-serif text-3xl md:text-5xl text-dark leading-tight mb-4">
+                ¡Recibe <span class="text-terracotta italic">20% OFF</span> en tu primera compra!
+            </h2>
+            <p class="font-sans text-dark/70 mb-8 max-w-md">
+                Únete a la familia Bettina y sé la primera en enterarte de nuevas colecciones, ventas exclusivas y más.
+            </p>
+            <form class="w-full max-w-sm w-full space-y-4">
+                <input type="email" placeholder="Tu correo electrónico" class="w-full bg-transparent border-b border-dark/30 py-2 px-1 text-dark focus:outline-none focus:border-olive transition-colors placeholder-dark/50">
+                <button type="button" class="w-full bg-olive hover:bg-[#5f5d44] text-cream px-6 py-3 font-medium tracking-widest uppercase transition-colors duration-300">
+                    SUSCRIBIRME
+                </button>
+            </form>
+        </div>
+        
+        <!-- Right: Image -->
+        <div class="w-full md:w-1/2 h-[400px] md:h-auto order-1 md:order-2">
+            <img src="https://images.unsplash.com/photo-1473621038790-b778b4751d56?q=80&w=2073&auto=format&fit=crop" alt="Mujer en traje de baño" class="w-full h-full object-cover object-center">
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-olive text-cream pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-1">
+                    <h4 class="font-serif text-2xl tracking-widest mb-6">BETTINA</h4>
+                    <p class="font-sans text-sm text-cream/80 leading-relaxed mb-6">
+                        Inspirados en la tierra, creados para el mar. Diseño consciente y elegante.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-pinterest-p text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Shop</h5>
+                    <ul class="space-y-3 font-sans text-sm text-cream/80">
+                        <li><a href="#" class="hover:text-cream transition-colors">Novedades</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Enterizos</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Bikinis</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Ropa de Playa</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Sale</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Servicio al Cliente</h5>
+                    <ul class="space-y-3 font-sans text-sm text-cream/80">
+                        <li><a href="#" class="hover:text-cream transition-colors">Contacto</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Envíos y Devoluciones</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Guía de Tallas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="font-sans font-semibold tracking-wider uppercase mb-5 text-sm">Contacto</h5>
+                    <ul class="space-y-3 font-sans text-sm text-cream/80">
+                        <li><i class="far fa-envelope mr-2"></i> hola@bettina.com</li>
+                        <li><i class="fab fa-whatsapp mr-2"></i> +57 300 000 0000</li>
+                        <li class="pt-4"><a href="#" class="underline hover:text-cream transition-colors">Chat en vivo</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-cream/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-cream/60">
+                <p>&copy; 2024 Bettina Swimwear. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-cream transition-colors">Términos y Condiciones</a>
+                    <a href="#" class="hover:text-cream transition-colors">Políticas de Privacidad</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        function comprar(prod, precio) {
-            window.open(`https://wa.me/573000000000?text=Hola,%20quiero%20el%20${prod}%20(${precio}%20COP)`, '_blank');
-        }
-    </script>
 </body>
 </html>
