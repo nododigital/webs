@@ -8,71 +8,75 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: #f8fafc; color: #0f172a; padding: 0; margin: 0; }
     
-    .contenedor { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .contenedor { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    @media (min-width: 900px) { .contenedor { padding: 2rem; } }
     
-    /* Vistas dinámicas */
-    .vista { display: none; animation: fadeIn 0.4s ease; }
+    .vista { display: none; animation: fadeIn 0.3s ease; }
     .vista.activa { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
     /* =========================================
-       VISTA 1: COLECCIONES (Inicio)
+       VISTA 1: COLECCIONES
        ========================================= */
-    .header-inicio { text-align: center; margin-bottom: 3rem; }
-    .header-inicio h1 { font-size: 2.2rem; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+    .header-inicio { text-align: center; margin-bottom: 2rem; padding-top: 1rem; }
+    .header-inicio h1 { font-size: 2rem; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
 
-    .grid-categorias { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-    .card-categoria { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e2e8f0; }
-    .card-categoria:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1); }
+    .grid-categorias { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card-categoria { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid #e2e8f0; }
+    .card-categoria:hover { transform: translateY(-3px); }
     
-    .card-categoria img.banner { width: 100%; height: 400px; object-fit: cover; display: block; background: #f1f5f9; }
-    .cat-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-    .cat-header h2 { font-size: 1.3rem; font-weight: 700; color: #1e293b; }
-    .badge { font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 20px; font-weight: 600; }
+    .card-categoria img.banner { width: 100%; height: 350px; object-fit: cover; display: block; background: #f1f5f9; }
+    .cat-header { padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+    .cat-header h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; }
+    .badge { font-size: 0.75rem; background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
 
     /* =========================================
-       VISTA 2: DETALLE DE VARIANTE
+       VISTA 2: DETALLE DE VARIANTE COMPACTO
        ========================================= */
-    .nav-detalle { display: flex; align-items: center; margin-bottom: 2rem; }
-    .btn-volver { background: none; border: none; font-size: 1rem; font-weight: 600; color: #64748b; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; transition: color 0.2s; }
+    .nav-detalle { display: flex; align-items: center; margin-bottom: 1rem; padding-top: 0.5rem; }
+    .btn-volver { background: none; border: none; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
     .btn-volver:hover { color: #0f172a; }
 
-    .layout-detalle { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+    .layout-detalle { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     @media (min-width: 900px) {
-      .layout-detalle { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+      .layout-detalle { grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     }
 
-    /* Columna Izquierda: Imagen Grande */
-    .visor-imagen { width: 100%; border-radius: 20px; overflow: hidden; background: #f1f5f9; box-shadow: 0 15px 35px -10px rgba(0,0,0,0.1); }
-    .visor-imagen img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    /* Ajuste crítico de altura para evitar scroll */
+    .visor-imagen { width: 100%; border-radius: 16px; overflow: hidden; background: #f1f5f9; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+    .visor-imagen img { width: 100%; height: 42vh; min-height: 250px; max-height: 400px; object-fit: cover; object-position: top; display: block; }
     @media (min-width: 900px) {
-      .visor-imagen { position: sticky; top: 2rem; }
+      .visor-imagen img { height: 75vh; max-height: 600px; }
     }
 
-    /* Columna Derecha: Info, Miniaturas y CTA */
-    .panel-info { display: flex; flex-direction: column; }
+    .panel-info { display: flex; flex-direction: column; justify-content: space-between; }
     
-    .textos-principales { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e2e8f0; }
-    .textos-principales h3 { font-size: 1.1rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-    .textos-principales h2 { font-size: 2.5rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; line-height: 1.1; }
-    .textos-principales .precio { font-size: 1.8rem; color: #16a34a; font-weight: 700; }
+    .textos-principales { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+    .textos-principales h3 { font-size: 0.9rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
+    .textos-principales h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 0.25rem; line-height: 1.1; }
+    .textos-principales .precio { font-size: 1.4rem; color: #16a34a; font-weight: 700; }
+    @media (min-width: 900px) {
+      .textos-principales h2 { font-size: 2.2rem; }
+      .textos-principales .precio { font-size: 1.6rem; }
+    }
 
-    .seccion-variantes h4 { font-size: 0.9rem; color: #64748b; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .seccion-variantes h4 { font-size: 0.8rem; color: #64748b; font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .grid-miniaturas { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
-    .thumb-item { width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover; cursor: pointer; border: 2px solid transparent; opacity: 0.6; transition: all 0.2s; background: #e2e8f0; }
-    .thumb-item:hover { opacity: 0.9; transform: translateY(-2px); }
-    .thumb-item.activo { border-color: #22c55e; opacity: 1; transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.25); }
+    .grid-miniaturas { display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+    @media (min-width: 900px) { .grid-miniaturas { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); } }
+    
+    .thumb-item { width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s; background: #e2e8f0; }
+    .thumb-item:hover { opacity: 0.9; }
+    .thumb-item.activo { border-color: #22c55e; opacity: 1; transform: scale(1.03); box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2); }
 
-    /* Botón Flotante / Fijo */
-    .contenedor-cta { position: sticky; bottom: 1.5rem; z-index: 10; padding: 1rem 0; background: linear-gradient(to top, #f8fafc 80%, transparent); }
-    .btn-wa-gigante { display: flex; justify-content: center; align-items: center; gap: 0.75rem; width: 100%; background: #22c55e; color: #ffffff; font-size: 1.1rem; font-weight: 700; padding: 1.25rem; border-radius: 14px; text-decoration: none; box-shadow: 0 10px 20px -5px rgba(34, 197, 94, 0.4); transition: transform 0.2s, background 0.2s; }
+    /* Botón integrado, sin posición absoluta que rompa la pantalla */
+    .btn-wa-gigante { display: flex; justify-content: center; align-items: center; width: 100%; background: #22c55e; color: #ffffff; font-size: 1.05rem; font-weight: 700; padding: 1rem; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); transition: transform 0.2s, background 0.2s; }
     .btn-wa-gigante:hover { background: #16a34a; transform: translateY(-2px); }
   </style>
 </head>
 <body>
 
-  <!-- VISTA 1: INICIO (Categorías) -->
+  <!-- VISTA INICIO -->
   <div id="vista-inicio" class="vista activa">
     <div class="contenedor">
       <div class="header-inicio">
@@ -84,7 +88,7 @@
     </div>
   </div>
 
-  <!-- VISTA 2: DETALLE (Producto y Variantes) -->
+  <!-- VISTA DETALLE -->
   <div id="vista-detalle" class="vista">
     <div class="contenedor">
       <div class="nav-detalle">
@@ -101,47 +105,33 @@
         <div class="panel-info">
           <div class="textos-principales">
             <h3 id="lbl-categoria">Categoría</h3>
-            <h2 id="lbl-nombre">Nombre Variante</h2>
+            <h2 id="lbl-nombre">Variante</h2>
             <div id="lbl-precio" class="precio">$0</div>
           </div>
 
           <div class="seccion-variantes">
             <h4>Selecciona un color / modelo</h4>
-            <div id="grid-miniaturas" class="grid-miniaturas">
-              <!-- Renderizado dinámico -->
-            </div>
+            <div id="grid-miniaturas" class="grid-miniaturas"></div>
           </div>
 
-          <div class="contenedor-cta">
-            <a id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-gigante">
-              Solicitar por WhatsApp
-            </a>
-          </div>
+          <a id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-gigante">
+            Quiero este modelo
+          </a>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Configuración de Sanity
     const PROJECT_ID = '4wg6vhpd';
     const DATASET = 'production';
 
-    // Consulta optimizada: trae todo estructurado y anidado desde la base de datos
     const QUERY = encodeURIComponent(`{
-      "config": *[_type == "configuracion"][0]{
-        telefono,
-        mensajeBase
-      },
+      "config": *[_type == "configuracion"][0]{ telefono, mensajeBase },
       "categorias": *[_type == "categoria"] | order(orden asc) {
-        _id,
-        nombre,
-        "refImg": imagen.asset._ref,
+        _id, nombre, "refImg": imagen.asset._ref,
         "variantes": *[_type == "producto" && references(^._id) && disponible == true] | order(orden asc) {
-          _id,
-          nombre,
-          valor,
-          "refFoto": foto.asset._ref
+          _id, nombre, valor, "refFoto": foto.asset._ref
         }
       }
     }`);
@@ -159,13 +149,11 @@
     let appData = {};
     let categoriaActiva = null;
 
-    // 1. Cargar datos desde Sanity al abrir la página
     async function inicializarCatalogo() {
       const contenedor = document.getElementById('grid-categorias');
       try {
         const respuesta = await fetch(API_URL);
         const { result } = await respuesta.json();
-        
         appData = result;
 
         if (!appData.categorias || appData.categorias.length === 0) {
@@ -173,7 +161,6 @@
           return;
         }
 
-        // Renderizar la cuadrícula inicial
         contenedor.innerHTML = appData.categorias.map((cat, index) => `
           <div class="card-categoria" onclick="abrirCategoria(${index})">
             <img class="banner" src="${parseImg(cat.refImg, 600)}" alt="${cat.nombre}" loading="lazy">
@@ -183,62 +170,51 @@
             </div>
           </div>
         `).join('');
-
       } catch (error) {
         console.error(error);
-        contenedor.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ef4444;">Error al cargar el catálogo. Verifica que estás usando un servidor local (localhost) autorizado en CORS.</p>';
+        contenedor.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ef4444;">Error al cargar el catálogo.</p>';
       }
     }
 
-    // 2. Navegación hacia el Detalle
     function abrirCategoria(indexCategoria) {
       categoriaActiva = appData.categorias[indexCategoria];
       document.getElementById('lbl-categoria').textContent = categoriaActiva.nombre;
       
       const variantes = categoriaActiva.variantes || [];
-      
       if (variantes.length > 0) {
-        const contenedorMiniaturas = document.getElementById('grid-miniaturas');
-        contenedorMiniaturas.innerHTML = variantes.map((v, index) => `
-          <img src="${parseImg(v.refFoto, 300)}" 
-               alt="${v.nombre}" 
-               class="thumb-item" 
-               id="thumb-${index}"
-               onclick="seleccionarVariante(${index})">
+        document.getElementById('grid-miniaturas').innerHTML = variantes.map((v, index) => `
+          <img src="${parseImg(v.refFoto, 300)}" alt="${v.nombre}" class="thumb-item" id="thumb-${index}" onclick="seleccionarVariante(${index})">
         `).join('');
 
         seleccionarVariante(0);
-
         document.getElementById('vista-inicio').classList.remove('activa');
         document.getElementById('vista-detalle').classList.add('activa');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
-    // 3. Selección de Variante y actualización de URL de WhatsApp
     function seleccionarVariante(index) {
       const variante = categoriaActiva.variantes[index];
       const config = appData.config || { telefono: '573005251091', mensajeBase: 'Hola, me interesa' };
       
-      document.getElementById('img-grande').src = parseImg(variante.refFoto, 1200);
+      document.getElementById('img-grande').src = parseImg(variante.refFoto, 1000);
       document.getElementById('lbl-nombre').textContent = variante.nombre;
       document.getElementById('lbl-precio').textContent = formatoCOP.format(variante.valor);
       
-      const msg = `${config.mensajeBase} ${categoriaActiva.nombre} - ${variante.nombre} (${formatoCOP.format(variante.valor)})`;
-      document.getElementById('btn-whatsapp').href = `https://wa.me/${config.telefono}?text=${encodeURIComponent(msg)}`;
+      // Armado seguro de URL con codificación completa
+      const textoWA = `${config.mensajeBase} ${categoriaActiva.nombre} - ${variante.nombre} (${formatoCOP.format(variante.valor)})`;
+      document.getElementById('btn-whatsapp').href = `https://wa.me/${config.telefono}?text=${encodeURIComponent(textoWA)}`;
 
       document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('activo'));
       document.getElementById(`thumb-${index}`).classList.add('activo');
     }
 
-    // 4. Volver al Inicio
     function volverInicio() {
       document.getElementById('vista-detalle').classList.remove('activa');
       document.getElementById('vista-inicio').classList.add('activa');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Ejecutar al cargar
     inicializarCatalogo();
   </script>
 </body>
