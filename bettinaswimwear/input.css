@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F2EFEA;
+  --color-olive: #7A795A;
+  --color-terracotta: #8D5B3A;
+  --color-dark: #333333;
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
