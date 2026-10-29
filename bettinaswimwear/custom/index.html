@@ -65,7 +65,7 @@
     .grid-miniaturas { display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
     @media (min-width: 900px) { .grid-miniaturas { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); } }
     
-    .thumb-item { width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s; background: #e2e8f0; }
+    .thumb-item { width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; object-position: center center; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s; background: #e2e8f0; }
     .thumb-item:hover { opacity: 0.9; }
     .thumb-item.activo { border-color: #22c55e; opacity: 1; transform: scale(1.03); box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2); }
 
