@@ -2,9 +2,26 @@
 
 @theme {
   --color-cream: #F2EFEA;
-  --color-olive: #7A795A;
-  --color-terracotta: #8D5B3A;
-  --color-dark: #333333;
+  --color-olive: #7A7258;
+  --color-terracotta: #80583A;
+  --color-dark: #2D2B26;
   --font-sans: "Montserrat", sans-serif;
   --font-serif: "Playfair Display", serif;
+}
+
+:root {
+  /* Fondo principal y áreas de respiro */
+  --bg-cream: #F2EFEA; /* Blanco roto / Crema texturizado */
+  
+  /* Tonos primarios para fondos de sección, botones o elementos destacados */
+  --primary-olive: #7A7258; /* Verde oliva cálido */
+  --primary-terracotta: #80583A; /* Marrón cálido / Arcilla */
+  
+  /* Tipografía */
+  --text-dark: #2D2B26; /* Gris muy oscuro con matiz cálido para textos legibles */
+  --text-light: #F2EFEA; /* Para textos sobre fondos oscuros (oliva o terracota) */
+  --text-accent: #80583A; /* Para subtítulos o enlaces sutiles */
+  
+  /* Bordes y divisores */
+  --border-delicate: rgba(122, 114, 88, 0.3); /* Oliva con transparencia para líneas finas */
 }

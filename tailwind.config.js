@@ -5,9 +5,10 @@ module.exports = {
     extend: {
       colors: {
         cream: '#F2EFEA',
-        olive: '#7A795A',
-        terracotta: '#8D5B3A',
-        dark: '#333333',
+        olive: '#7A7258',
+        terracotta: '#80583A',
+        dark: '#2D2B26',
+        'border-delicate': 'rgba(122, 114, 88, 0.3)',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
