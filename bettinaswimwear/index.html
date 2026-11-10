@@ -70,31 +70,125 @@
         .contenedor { max-width: 1200px; margin: 0 auto; padding: 1rem; }
         @media (min-width: 900px) { .contenedor { padding: 2rem; } }
         
-        .vista { display: none; animation: fadeIn 0.3s ease; }
-        .vista.activa { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* VISTA 1: COLECCIONES */
+        /* CATÁLOGO DE REFERENCIAS */
         .header-inicio { text-align: center; margin-bottom: 2rem; padding-top: 1rem; }
         .header-inicio h1 { font-size: 2rem; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
 
         .grid-categorias { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card-categoria { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid #e2e8f0; }
-        .card-categoria:hover { transform: translateY(-3px); }
+        .card-categoria { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e2e8f0; }
+        .card-categoria:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
         
         .card-categoria img.banner { width: 100%; height: 350px; object-fit: cover; display: block; background: #f1f5f9; }
         .cat-header { padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
         .cat-header h2 { font-size: 1.2rem; font-weight: 700; color: #1e293b; }
         .badge { font-size: 0.75rem; background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
 
-        /* VISTA 2: DETALLE DE VARIANTE COMPACTO */
-        .nav-detalle { display: flex; align-items: center; margin-bottom: 1rem; padding-top: 0.5rem; }
-        .btn-volver { background: none; border: none; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-        .btn-volver:hover { color: #0f172a; }
+        /* FALSO INTERSTITIAL (MODAL DE DETALLE) */
+        .modal-interstitial {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .modal-interstitial.activa {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 43, 38, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .modal-dialog {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-cream, #F2EFEA);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transform: translateY(20px);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 1.25rem;
+        }
+
+        @media (min-width: 900px) {
+            .modal-dialog {
+                width: 90%;
+                max-width: 1050px;
+                height: auto;
+                max-height: 90vh;
+                border-radius: 6px;
+                padding: 2.25rem;
+                box-shadow: 0 25px 50px -12px rgba(45, 43, 38, 0.35);
+                border: 1px solid var(--border-delicate, rgba(122, 114, 88, 0.3));
+            }
+        }
+
+        .modal-interstitial.activa .modal-dialog {
+            transform: translateY(0);
+        }
+
+        .modal-header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-delicate, rgba(122, 114, 88, 0.2));
+        }
+
+        .btn-volver {
+            background: none;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary-terracotta, #80583A);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s, transform 0.2s;
+            padding: 0.25rem 0.5rem;
+        }
+        .btn-volver:hover {
+            color: var(--primary-olive, #7A7258);
+            transform: translateX(-3px);
+        }
+
+        .btn-cerrar-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--text-dark, #2D2B26);
+            cursor: pointer;
+            padding: 0 0.5rem;
+            opacity: 0.6;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .btn-cerrar-modal:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
 
         .layout-detalle { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         @media (min-width: 900px) {
-          .layout-detalle { grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+          .layout-detalle { grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+          .modal-dialog .visor-imagen { height: 58vh; max-height: 520px; }
         }
 
         /* Ajuste crítico de altura y prevención de Layout Shift (CLS) */
@@ -166,8 +260,8 @@
 
     <!-- 4. Catálogo de Referencias y Variantes (Estilo Custom) -->
     <section id="seccion-referencias" style="padding: 2rem 0;">
-      <!-- VISTA INICIO -->
-      <div id="vista-inicio" class="vista activa">
+      <!-- VISTA INICIO (Grilla de Referencias Permanente) -->
+      <div id="vista-inicio">
         <div class="contenedor">
           <div class="header-inicio">
             <h1>Referencias</h1>
@@ -178,12 +272,20 @@
         </div>
       </div>
 
-      <!-- VISTA DETALLE -->
-      <div id="vista-detalle" class="vista">
-        <div class="contenedor">
-          <div class="nav-detalle">
-            <button class="btn-volver" onclick="volverInicio()">
-              ← Volver a referencias
+      <!-- FALSO INTERSTITIAL (MODAL DE DETALLE) -->
+      <div id="vista-detalle" class="modal-interstitial" aria-modal="true" role="dialog">
+        <!-- Fondo oscuro con desenfoque (clic para cerrar) -->
+        <div class="modal-backdrop" onclick="cerrarDetalle()"></div>
+
+        <!-- Contenedor elevado -->
+        <div class="modal-dialog">
+          <!-- Barra superior del interstitial -->
+          <div class="modal-header-nav">
+            <button type="button" class="btn-volver" onclick="cerrarDetalle()">
+              <span>&larr;</span> <span>Volver a referencias</span>
+            </button>
+            <button type="button" class="btn-cerrar-modal" onclick="cerrarDetalle()" aria-label="Cerrar ventana">
+              &times;
             </button>
           </div>
 
@@ -686,9 +788,22 @@
                     }
                 }, { passive: true });
             }
+
+            // Si el visitante entra con enlace directo tipo #ref-azure, abrirlo sin recargar
+            const hash = window.location.hash;
+            if (hash.startsWith('#ref-') && appData && appData.categorias) {
+                const targetSlug = hash.replace('#ref-', '');
+                const indexFound = appData.categorias.findIndex(cat => {
+                    const slug = cat.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                    return slug === targetSlug;
+                });
+                if (indexFound !== -1) {
+                    abrirCategoria(indexFound, false);
+                }
+            }
         }
 
-        function abrirCategoria(indexCategoria) {
+        function abrirCategoria(indexCategoria, pushHistory = true) {
             categoriaActiva = appData.categorias[indexCategoria];
             if (!categoriaActiva) return;
 
@@ -701,12 +816,18 @@
                 `).join('');
 
                 seleccionarVariante(0);
-                document.getElementById('vista-inicio').classList.remove('activa');
-                document.getElementById('vista-detalle').classList.add('activa');
+                
+                // Mostrar el falso interstitial sobre la página conservando la posición de scroll
+                const modal = document.getElementById('vista-detalle');
+                if (modal) {
+                    modal.classList.add('activa');
+                    document.body.style.overflow = 'hidden';
+                }
 
-                const seccion = document.getElementById('seccion-referencias');
-                if (seccion) {
-                    seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Sincronizar con el historial para que "Atrás" en móvil cierre el modal sin salirse de la web
+                if (pushHistory) {
+                    const slug = categoriaActiva.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                    history.pushState({ modalAbierto: true, categoria: categoriaActiva.nombre }, '', `#ref-${slug}`);
                 }
             }
         }
@@ -783,14 +904,34 @@
             actualizarFotoGrande();
         }
 
-        function volverInicio() {
-            document.getElementById('vista-detalle').classList.remove('activa');
-            document.getElementById('vista-inicio').classList.add('activa');
-            const seccion = document.getElementById('seccion-referencias');
-            if (seccion) {
-                seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function cerrarDetalle(fromPopState = false) {
+            const modal = document.getElementById('vista-detalle');
+            if (!modal || !modal.classList.contains('activa')) return;
+
+            modal.classList.remove('activa');
+            document.body.style.overflow = '';
+
+            // Si se cerró por botón o clic en fondo y aún tenemos el hash activo, volver en historial
+            if (!fromPopState && window.location.hash.startsWith('#ref-')) {
+                history.back();
             }
         }
+
+        function volverInicio() {
+            cerrarDetalle(false);
+        }
+
+        // Soporte de navegación nativa "Atrás" (gesto móvil / botón del navegador)
+        window.addEventListener('popstate', () => {
+            cerrarDetalle(true);
+        });
+
+        // Soporte para tecla Escape en desktop
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                cerrarDetalle(false);
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', inicializarCatalogo);
     </script>
