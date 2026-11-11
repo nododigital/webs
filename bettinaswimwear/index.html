@@ -787,11 +787,13 @@
                 let touchStartX = 0;
                 visorEl.addEventListener('touchstart', e => {
                     touchStartX = e.changedTouches[0].screenX;
+                    detenerAutoSlide(true);
                 }, { passive: true });
                 visorEl.addEventListener('touchend', e => {
                     const diff = e.changedTouches[0].screenX - touchStartX;
                     if (Math.abs(diff) > 40) {
-                        cambiarFotoSlide(diff < 0 ? 1 : -1);
+                        detenerAutoSlide(true);
+                        cambiarFotoSlide(diff < 0 ? 1 : -1, true);
                     }
                 }, { passive: true });
             }
@@ -839,10 +841,36 @@
             }
         }
 
+        let timerAutoSlide = null;
+        let usuarioIntervinoSlide = false;
+
+        function iniciarAutoSlide() {
+            detenerAutoSlide(false);
+            if (usuarioIntervinoSlide) return;
+            if (!varianteActiva) return;
+            const fotos = varianteActiva.fotos && varianteActiva.fotos.length > 0 ? varianteActiva.fotos : [varianteActiva.refFoto];
+            if (fotos.length <= 1) return;
+
+            timerAutoSlide = setInterval(() => {
+                cambiarFotoSlide(1, false);
+            }, 3000);
+        }
+
+        function detenerAutoSlide(porIntervencionUsuario = true) {
+            if (timerAutoSlide) {
+                clearInterval(timerAutoSlide);
+                timerAutoSlide = null;
+            }
+            if (porIntervencionUsuario) {
+                usuarioIntervinoSlide = true;
+            }
+        }
+
         function seleccionarVariante(index) {
             const variante = categoriaActiva.variantes[index];
             varianteActiva = variante;
             fotoActualIndex = 0;
+            usuarioIntervinoSlide = false;
             const config = appData.config || { telefono: '573116504321', mensajeBase: 'Hola, me interesa' };
             
             document.getElementById('lbl-nombre').textContent = variante.nombre;
@@ -860,6 +888,7 @@
 
             actualizarFotoGrande();
             actualizarControlesSlide();
+            iniciarAutoSlide();
         }
 
         function actualizarFotoGrande() {
@@ -897,7 +926,10 @@
             }
         }
 
-        function cambiarFotoSlide(delta) {
+        function cambiarFotoSlide(delta, porUsuario = true) {
+            if (porUsuario) {
+                detenerAutoSlide(true);
+            }
             if (!varianteActiva) return;
             const fotos = varianteActiva.fotos && varianteActiva.fotos.length > 0 ? varianteActiva.fotos : [varianteActiva.refFoto];
             if (fotos.length <= 1) return;
@@ -905,13 +937,17 @@
             actualizarFotoGrande();
         }
 
-        function irAFotoSlide(index) {
+        function irAFotoSlide(index, porUsuario = true) {
+            if (porUsuario) {
+                detenerAutoSlide(true);
+            }
             if (!varianteActiva) return;
             fotoActualIndex = index;
             actualizarFotoGrande();
         }
 
         function cerrarDetalle(fromPopState = false) {
+            detenerAutoSlide(false);
             const modal = document.getElementById('vista-detalle');
             if (!modal || !modal.classList.contains('activa')) return;
 
