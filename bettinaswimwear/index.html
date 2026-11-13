@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -23,16 +26,16 @@
         :root {
             /* Fondo principal y áreas de respiro */
             --bg-cream: #F2EFEA;
-            
+
             /* Tonos primarios para fondos de sección, botones o elementos destacados */
             --primary-olive: #7A7258;
             --primary-terracotta: #80583A;
-            
+
             /* Tipografía */
             --text-dark: #2D2B26;
             --text-light: #F2EFEA;
             --text-accent: #80583A;
-            
+
             /* Bordes y divisores */
             --border-delicate: rgba(122, 114, 88, 0.3);
         }
@@ -41,15 +44,17 @@
         html {
             scroll-behavior: smooth;
         }
+
         body {
             background-color: var(--bg-cream);
             color: var(--text-dark);
         }
-        
+
         /* Hover effect for product cards */
         .product-card:hover .product-img {
             transform: scale(1.05);
         }
+
         .product-img {
             transition: transform 0.5s ease;
         }
@@ -58,18 +63,39 @@
         .play-btn {
             animation: pulse 2s infinite;
         }
+
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 239, 234, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(242, 239, 234, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 239, 234, 0); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(242, 239, 234, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(242, 239, 234, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(242, 239, 234, 0);
+            }
         }
 
         /* =========================================
            ESTILOS EXACTOS DE CUSTOM (CATÁLOGO SANITY)
            ========================================= */
-        .contenedor { max-width: 1280px; margin: 0 auto; padding: 1rem; }
-        @media (min-width: 900px) { .contenedor { padding: 1.5rem 2rem; } }
-        
+        .contenedor {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        @media (min-width: 900px) {
+            .contenedor {
+                padding: 1.5rem 2rem;
+            }
+        }
+
         /* =========================================
            CATÁLOGO DE REFERENCIAS (TIPOGRAFÍA EB GARAMOND)
            ========================================= */
@@ -78,8 +104,19 @@
             font-family: 'EB Garamond', Georgia, serif;
         }
 
-        .header-inicio { text-align: center; margin-bottom: 2rem; padding-top: 1rem; }
-        .header-inicio h1 { font-family: 'EB Garamond', Georgia, serif; font-size: 2.5rem; font-weight: 500; color: var(--text-dark, #2D2B26); letter-spacing: 0.04em; }
+        .header-inicio {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+        .header-inicio h1 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--text-dark, #2D2B26);
+            letter-spacing: 0.04em;
+        }
 
         /* Grilla de Referencias: 2 columnas en mobile, 4 columnas en desktop */
         .grid-categorias {
@@ -87,9 +124,13 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 0.85rem;
         }
+
         @media (min-width: 640px) {
-            .grid-categorias { gap: 1.15rem; }
+            .grid-categorias {
+                gap: 1.15rem;
+            }
         }
+
         @media (min-width: 1024px) {
             .grid-categorias {
                 grid-template-columns: repeat(4, 1fr);
@@ -97,9 +138,21 @@
             }
         }
 
-        .card-categoria { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e2e8f0; }
-        .card-categoria:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-        
+        .card-categoria {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-categoria:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
         .card-categoria img.banner {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -116,6 +169,7 @@
             align-items: flex-start;
             gap: 0.35rem;
         }
+
         .cat-header h2 {
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 1.15rem;
@@ -124,6 +178,7 @@
             letter-spacing: 0.02em;
             line-height: 1.2;
         }
+
         .badge {
             font-family: 'EB Garamond', Georgia, serif;
             font-size: 0.75rem;
@@ -142,9 +197,11 @@
                 justify-content: space-between;
                 align-items: center;
             }
+
             .cat-header h2 {
                 font-size: 1.45rem;
             }
+
             .badge {
                 font-size: 0.85rem;
                 padding: 4px 12px;
@@ -163,6 +220,7 @@
             pointer-events: none;
             transition: opacity 0.25s ease;
         }
+
         .modal-interstitial.activa {
             opacity: 1;
             pointer-events: auto;
@@ -216,6 +274,7 @@
             margin-bottom: 0.5rem;
             border-bottom: 1px solid var(--border-delicate, rgba(122, 114, 88, 0.2));
         }
+
         @media (min-width: 900px) {
             .modal-header-nav {
                 padding-bottom: 0.75rem;
@@ -238,10 +297,12 @@
             transition: color 0.2s, transform 0.2s;
             padding: 0.2rem 0.25rem;
         }
+
         .btn-volver:hover {
             color: var(--primary-olive, #7A7258);
             transform: translateX(-3px);
         }
+
         @media (min-width: 900px) {
             .btn-volver {
                 font-size: 0.85rem;
@@ -261,10 +322,12 @@
             opacity: 0.6;
             transition: opacity 0.2s, transform 0.2s;
         }
+
         .btn-cerrar-modal:hover {
             opacity: 1;
             transform: scale(1.1);
         }
+
         @media (min-width: 900px) {
             .btn-cerrar-modal {
                 font-size: 2rem;
@@ -272,9 +335,18 @@
             }
         }
 
-        .layout-detalle { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
+        .layout-detalle {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.65rem;
+        }
+
         @media (min-width: 900px) {
-          .layout-detalle { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+            .layout-detalle {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+                align-items: center;
+            }
         }
 
         /* Interstitial / Modal: Visor con proporción cuadrada exacta (1:1) */
@@ -288,18 +360,21 @@
             border-radius: 8px;
             overflow: hidden;
             background: #e2e8f0;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             contain: layout paint;
         }
+
         @media (min-width: 900px) {
-          .modal-dialog .visor-imagen,
-          .visor-imagen {
-              max-width: 460px;
-              max-height: 460px;
-              height: auto;
-              border-radius: 10px;
-          }
+
+            .modal-dialog .visor-imagen,
+            .visor-imagen {
+                max-width: 460px;
+                max-height: 460px;
+                height: auto;
+                border-radius: 10px;
+            }
         }
+
         .visor-imagen img {
             width: 100%;
             height: 100%;
@@ -308,58 +383,259 @@
             display: block;
             transition: opacity 0.12s ease-out;
         }
+
         .visor-imagen img.cargando {
             opacity: 0;
         }
-        .slide-controles { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: space-between; padding: 0 0.5rem; }
-        .btn-slide { pointer-events: auto; width: 34px; height: 34px; border-radius: 50%; background: rgba(45, 43, 38, 0.45); color: #F2EFEA; border: 1px solid rgba(242, 239, 234, 0.4); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; line-height: 1; cursor: pointer; transition: all 0.2s ease; user-select: none; }
-        .btn-slide:hover { background: rgba(122, 114, 88, 0.9); border-color: #F2EFEA; transform: scale(1.08); }
-        .slide-indicadores { position: absolute; bottom: 0.5rem; left: 0; right: 0; display: flex; justify-content: center; gap: 0.35rem; pointer-events: auto; }
-        .slide-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(242, 239, 234, 0.4); border: 1px solid rgba(45, 43, 38, 0.2); cursor: pointer; transition: all 0.25s ease; }
-        .slide-dot.activo { background: #F2EFEA; width: 18px; border-radius: 4px; }
-        @media (min-width: 900px) {
-          .slide-controles { padding: 0 0.75rem; }
-          .btn-slide { width: 40px; height: 40px; font-size: 1.5rem; }
-          .slide-indicadores { bottom: 0.85rem; gap: 0.45rem; }
-          .slide-dot { width: 8px; height: 8px; }
-          .slide-dot.activo { width: 22px; }
+
+        .slide-controles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.5rem;
         }
 
-        .panel-info { display: flex; flex-direction: column; justify-content: space-between; }
-        
-        .textos-principales { margin-bottom: 0.45rem; padding-bottom: 0.45rem; border-bottom: 1px solid var(--border-delicate, rgba(122, 114, 88, 0.25)); }
-        .textos-principales h3 { font-family: 'EB Garamond', Georgia, serif; font-size: 0.8rem; color: var(--primary-olive, #7A7258); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.1rem; font-weight: 500; }
-        .textos-principales h2 { font-family: 'EB Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 500; color: var(--text-dark, #2D2B26); margin-bottom: 0.1rem; line-height: 1.1; letter-spacing: 0.02em; }
-        .textos-principales .precio { font-family: 'EB Garamond', Georgia, serif; font-size: 1.3rem; color: var(--primary-terracotta, #80583A); font-weight: 600; letter-spacing: 0.02em; line-height: 1.1; }
-        @media (min-width: 900px) {
-          .textos-principales { margin-bottom: 1rem; padding-bottom: 1rem; }
-          .textos-principales h3 { font-size: 1rem; margin-bottom: 0.25rem; }
-          .textos-principales h2 { font-size: 2.5rem; margin-bottom: 0.25rem; }
-          .textos-principales .precio { font-size: 1.85rem; }
+        .btn-slide {
+            pointer-events: auto;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(45, 43, 38, 0.45);
+            color: #F2EFEA;
+            border: 1px solid rgba(242, 239, 234, 0.4);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
         }
 
-        .seccion-variantes h4 { font-family: 'EB Garamond', Georgia, serif; font-size: 0.8rem; color: var(--text-dark, #2D2B26); font-weight: 500; margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
-        @media (min-width: 900px) {
-          .seccion-variantes h4 { font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .btn-slide:hover {
+            background: rgba(122, 114, 88, 0.9);
+            border-color: #F2EFEA;
+            transform: scale(1.08);
         }
-        
-        .grid-miniaturas { display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 0.45rem; margin-bottom: 0.65rem; min-height: 56px; contain: layout; }
-        @media (min-width: 900px) {
-          .grid-miniaturas { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; min-height: 90px; }
+
+        .slide-indicadores {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.35rem;
+            pointer-events: auto;
         }
-        
-        .thumb-item { width: 100%; aspect-ratio: 1/1; border-radius: 6px; object-fit: cover; object-position: center center; cursor: pointer; border: 2px solid transparent; opacity: 0.6; transition: all 0.2s; background: #e2e8f0; }
-        .thumb-item:hover { opacity: 0.9; }
-        .thumb-item.activo { border-color: var(--primary-terracotta, #80583A); opacity: 1; transform: scale(1.03); box-shadow: 0 4px 10px rgba(128, 88, 58, 0.2); }
+
+        .slide-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(242, 239, 234, 0.4);
+            border: 1px solid rgba(45, 43, 38, 0.2);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .slide-dot.activo {
+            background: #F2EFEA;
+            width: 18px;
+            border-radius: 4px;
+        }
+
+        @media (min-width: 900px) {
+            .slide-controles {
+                padding: 0 0.75rem;
+            }
+
+            .btn-slide {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .slide-indicadores {
+                bottom: 0.85rem;
+                gap: 0.45rem;
+            }
+
+            .slide-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .slide-dot.activo {
+                width: 22px;
+            }
+        }
+
+        .panel-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .textos-principales {
+            margin-bottom: 0.45rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid var(--border-delicate, rgba(122, 114, 88, 0.25));
+        }
+
+        .textos-principales h3 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.8rem;
+            color: var(--primary-olive, #7A7258);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.1rem;
+            font-weight: 500;
+        }
+
+        .textos-principales h2 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-dark, #2D2B26);
+            margin-bottom: 0.1rem;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        .textos-principales .precio {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--primary-terracotta, #80583A);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        @media (min-width: 900px) {
+            .textos-principales {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .textos-principales h3 {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .textos-principales h2 {
+                font-size: 2.5rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .textos-principales .precio {
+                font-size: 1.85rem;
+            }
+        }
+
+        .seccion-variantes h4 {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.8rem;
+            color: var(--text-dark, #2D2B26);
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
+        }
+
+        @media (min-width: 900px) {
+            .seccion-variantes h4 {
+                font-size: 0.95rem;
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        .grid-miniaturas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+            gap: 0.45rem;
+            margin-bottom: 0.65rem;
+            min-height: 56px;
+            contain: layout;
+        }
+
+        @media (min-width: 900px) {
+            .grid-miniaturas {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+                min-height: 90px;
+            }
+        }
+
+        .thumb-item {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 6px;
+            object-fit: cover;
+            object-position: center center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: all 0.2s;
+            background: #e2e8f0;
+        }
+
+        .thumb-item:hover {
+            opacity: 0.9;
+        }
+
+        .thumb-item.activo {
+            border-color: var(--primary-terracotta, #80583A);
+            opacity: 1;
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(128, 88, 58, 0.2);
+        }
 
         /* Botón integrado, sin posición absoluta que rompa la pantalla */
-        .btn-wa-gigante { font-family: 'EB Garamond', Georgia, serif; display: flex; justify-content: center; align-items: center; width: 100%; background: #22c55e; color: #ffffff; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.7rem 1rem; border-radius: 6px; text-decoration: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); transition: transform 0.2s, background 0.2s; }
-        .btn-wa-gigante:hover { background: #16a34a; transform: translateY(-2px); }
+        .btn-wa-gigante {
+            font-family: 'EB Garamond', Georgia, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: #22c55e;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-wa-gigante:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
         @media (min-width: 900px) {
-          .btn-wa-gigante { font-size: 1.15rem; padding: 1rem; border-radius: 8px; }
+            .btn-wa-gigante {
+                font-size: 1.15rem;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+        }
+
+        #video-hero {
+            object-position: center 62% !important;
         }
     </style>
 </head>
+
 <body class="font-sans antialiased flex flex-col min-h-screen">
 
     <!-- 1. Top Announcement Bar -->
@@ -367,18 +643,15 @@
         ENVÍOS GRATIS POR COMPRAS SUPERIORES A $300.000
     </div>
 
-<!-- 2. Header -->
+    <!-- 2. Header -->
     <header class="bg-cream border-b border-olive/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo SVG -->
-                <div class="flex-shrink-0 flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                <div
+                    class="flex-shrink-0 flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
                     <a href="#" class="block">
-                        <img 
-                            src="bettina-logo.svg" 
-                            alt="Bettina Swimwear" 
-                            class="h-8 md:h-10 w-auto object-contain"
-                        >
+                        <img src="bettina-logo.svg" alt="Bettina Swimwear" class="h-8 md:h-10 w-auto object-contain">
                     </a>
                 </div>
             </div>
@@ -386,93 +659,92 @@
     </header>
     <!-- 3. Main Hero -->
     <section class="relative h-[70dvh] md:h-[85dvh] w-full bg-dark">
-        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1920/v1794283859/bettinaswimwear/hero/bettina-hero.jpg" alt="Bettina Swimwear" class="w-full h-full object-cover object-center">
+        <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1920/v1794283859/bettinaswimwear/hero/bettina-hero.jpg"
+            alt="Bettina Swimwear" class="w-full h-full object-cover object-center">
     </section>
 
     <!-- 4. Catálogo de Referencias y Variantes (Estilo Custom) -->
     <section id="seccion-referencias" style="padding: 2rem 0;">
-      <!-- VISTA INICIO (Grilla de Referencias Permanente) -->
-      <div id="vista-inicio">
-        <div class="contenedor">
-          <div class="header-inicio">
-            <h1>Referencias</h1>
-          </div>
-          <div id="grid-categorias" class="grid-categorias">
-            <p style="text-align: center; grid-column: 1/-1; color: #64748b;">Cargando catálogo...</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FALSO INTERSTITIAL (MODAL DE DETALLE) -->
-      <div id="vista-detalle" class="modal-interstitial" aria-modal="true" role="dialog">
-        <!-- Fondo oscuro con desenfoque (clic para cerrar) -->
-        <div class="modal-backdrop" onclick="cerrarDetalle()"></div>
-
-        <!-- Contenedor elevado -->
-        <div class="modal-dialog">
-          <!-- Barra superior del interstitial -->
-          <div class="modal-header-nav">
-            <button type="button" class="btn-volver" onclick="cerrarDetalle()">
-              <span>&larr;</span> <span>Volver a referencias</span>
-            </button>
-            <button type="button" class="btn-cerrar-modal" onclick="cerrarDetalle()" aria-label="Cerrar ventana">
-              &times;
-            </button>
-          </div>
-
-          <div class="layout-detalle">
-            <div class="visor-imagen" id="visor-slide">
-              <img id="img-grande" src="" alt="Vista previa">
-              <div id="slide-controles" class="slide-controles" style="display: none;">
-                <button type="button" class="btn-slide btn-prev" onclick="cambiarFotoSlide(-1)" aria-label="Foto anterior">&#8249;</button>
-                <button type="button" class="btn-slide btn-next" onclick="cambiarFotoSlide(1)" aria-label="Siguiente foto">&#8250;</button>
-                <div id="slide-indicadores" class="slide-indicadores"></div>
-              </div>
+        <!-- VISTA INICIO (Grilla de Referencias Permanente) -->
+        <div id="vista-inicio">
+            <div class="contenedor">
+                <div class="header-inicio">
+                    <h1>Referencias</h1>
+                </div>
+                <div id="grid-categorias" class="grid-categorias">
+                    <p style="text-align: center; grid-column: 1/-1; color: #64748b;">Cargando catálogo...</p>
+                </div>
             </div>
-
-            <div class="panel-info">
-              <div class="textos-principales">
-                <h3 id="lbl-categoria">Categoría</h3>
-                <h2 id="lbl-nombre">Variante</h2>
-                <div id="lbl-precio" class="precio">$0</div>
-              </div>
-
-              <div class="seccion-variantes">
-                <h4>Selecciona un color / modelo</h4>
-                <div id="grid-miniaturas" class="grid-miniaturas"></div>
-              </div>
-
-              <a id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-gigante">
-                Quiero este modelo
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
+
+        <!-- FALSO INTERSTITIAL (MODAL DE DETALLE) -->
+        <div id="vista-detalle" class="modal-interstitial" aria-modal="true" role="dialog">
+            <!-- Fondo oscuro con desenfoque (clic para cerrar) -->
+            <div class="modal-backdrop" onclick="cerrarDetalle()"></div>
+
+            <!-- Contenedor elevado -->
+            <div class="modal-dialog">
+                <!-- Barra superior del interstitial -->
+                <div class="modal-header-nav">
+                    <button type="button" class="btn-volver" onclick="cerrarDetalle()">
+                        <span>&larr;</span> <span>Volver a referencias</span>
+                    </button>
+                    <button type="button" class="btn-cerrar-modal" onclick="cerrarDetalle()"
+                        aria-label="Cerrar ventana">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="layout-detalle">
+                    <div class="visor-imagen" id="visor-slide">
+                        <img id="img-grande" src="" alt="Vista previa">
+                        <div id="slide-controles" class="slide-controles" style="display: none;">
+                            <button type="button" class="btn-slide btn-prev" onclick="cambiarFotoSlide(-1)"
+                                aria-label="Foto anterior">&#8249;</button>
+                            <button type="button" class="btn-slide btn-next" onclick="cambiarFotoSlide(1)"
+                                aria-label="Siguiente foto">&#8250;</button>
+                            <div id="slide-indicadores" class="slide-indicadores"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel-info">
+                        <div class="textos-principales">
+                            <h3 id="lbl-categoria">Categoría</h3>
+                            <h2 id="lbl-nombre">Variante</h2>
+                            <div id="lbl-precio" class="precio">$0</div>
+                        </div>
+
+                        <div class="seccion-variantes">
+                            <h4>Selecciona un color / modelo</h4>
+                            <div id="grid-miniaturas" class="grid-miniaturas"></div>
+                        </div>
+
+                        <a id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-gigante">
+                            Quiero este modelo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-<!-- 5. Video Hero Block (Loop Decorativo) -->
+    <!-- 5. Video Hero Block (Loop Decorativo) -->
     <section class="relative h-[60dvh] w-full bg-dark overflow-hidden isolate">
-        
+
         <!-- Video de fondo en bucle (Carga diferida para priorizar el catálogo de fotos) -->
-        <video 
-            id="video-hero"
-            loop 
-            muted 
-            playsinline 
-            webkit-playsinline 
-            preload="none"
-            class="absolute inset-0 w-full h-full object-cover object-[center_65%] opacity-90"
-            data-src="https://res.cloudinary.com/juf33buk/video/upload/q_auto,w_1280/v1794592839/Chica_bailando_en_el_escenario_fd62bf7f.mp4"
-        >
+        <video id="video-hero" loop muted playsinline webkit-playsinline preload="none"
+            class="absolute inset-0 w-full h-full object-cover opacity-90"
+            style="object-position: center 62%;"
+            data-src="https://res.cloudinary.com/juf33buk/video/upload/q_auto,w_1280/v1794592839/Chica_bailando_en_el_escenario_fd62bf7f.mp4">
         </video>
-        
+
         <!-- Capa oscura para asegurar el contraste del texto -->
         <div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
 
         <!-- Título decorativo en la parte inferior -->
         <div class="absolute bottom-8 w-full text-center px-4 z-10 pointer-events-none">
-            <h3 class="font-serif text-2xl md:text-4xl text-cream tracking-wide drop-shadow-md">La Esencia del Verano</h3>
+            <h3 class="font-serif text-2xl md:text-4xl text-cream tracking-wide drop-shadow-md">La Esencia del Verano
+            </h3>
             <p class="font-sans text-cream/90 text-sm mt-2 tracking-widest uppercase drop-shadow">Colección 2026</p>
         </div>
     </section>
@@ -480,7 +752,8 @@
     <!-- 6. Discount Block (50/50 Split) -->
     <section class="flex flex-col md:flex-row w-full bg-cream">
         <!-- Left: Content -->
-        <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-12 md:p-20 lg:p-32 text-center order-2 md:order-1">
+        <div
+            class="w-full md:w-1/2 flex flex-col items-center justify-center p-12 md:p-20 lg:p-32 text-center order-2 md:order-1">
             <h2 class="font-serif text-3xl md:text-5xl text-dark leading-tight mb-4">
                 ¡Recibe <span class="text-terracotta italic">20% OFF</span> en tu primera compra!
             </h2>
@@ -488,16 +761,19 @@
                 Únete a la familia Bettina y sé la primera en enterarte de nuevas colecciones, ventas exclusivas y más.
             </p>
             <form class="w-full max-w-sm w-full space-y-4">
-                <input type="email" placeholder="Tu correo electrónico" class="w-full bg-transparent border-b border-dark/30 py-2 px-1 text-dark focus:outline-none focus:border-olive transition-colors placeholder-dark/50">
-                <button type="button" class="w-full bg-olive hover:bg-[#5f5d44] text-cream px-6 py-3 font-medium tracking-widest uppercase transition-colors duration-300">
+                <input type="email" placeholder="Tu correo electrónico"
+                    class="w-full bg-transparent border-b border-dark/30 py-2 px-1 text-dark focus:outline-none focus:border-olive transition-colors placeholder-dark/50">
+                <button type="button"
+                    class="w-full bg-olive hover:bg-[#5f5d44] text-cream px-6 py-3 font-medium tracking-widest uppercase transition-colors duration-300">
                     SUSCRIBIRME
                 </button>
             </form>
         </div>
-        
+
         <!-- Right: Image -->
         <div class="w-full md:w-1/2 h-[400px] md:h-auto order-1 md:order-2">
-            <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792853929/h37ksg7iywsw1wdpaqu1.jpg" alt="Mujer en traje de baño" class="w-full h-full object-cover object-center">
+            <img src="https://res.cloudinary.com/juf33buk/image/upload/f_auto,q_auto,c_scale,w_1280/v1792853929/h37ksg7iywsw1wdpaqu1.jpg"
+                alt="Mujer en traje de baño" class="w-full h-full object-cover object-center">
         </div>
     </section>
 
@@ -505,7 +781,7 @@
     <footer class="bg-olive text-cream pt-16 pb-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 mb-12">
-                
+
                 <!-- Brand Info -->
                 <div class="md:col-span-1">
                     <h4 class="font-serif text-2xl tracking-widest mb-6">BETTINA</h4>
@@ -513,9 +789,12 @@
                         Inspirados en la tierra, creados para el mar. Diseño consciente y elegante.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
-                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i class="fab fa-pinterest-p text-xl"></i></a>
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i
+                                class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-cream hover:text-terracotta transition-colors"><i
+                                class="fab fa-pinterest-p text-xl"></i></a>
                     </div>
                 </div>
 
@@ -576,245 +855,245 @@
             },
             categorias: [
                 {
-                                "nombre": "Arena",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Azul",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381178/bettinaswimwear/catalogo/arena/azul/arena_azul_catalogo.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Dorado",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158909/bettinaswimwear/catalogo/arena/dorado/arena_dorado.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158909/bettinaswimwear/catalogo/arena/dorado/arena_dorado.png",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Negro",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Arena",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                    "variantes": [
+                        {
+                            "nombre": "Azul",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381178/bettinaswimwear/catalogo/arena/azul/arena_azul_catalogo.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Dorado",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158909/bettinaswimwear/catalogo/arena/dorado/arena_dorado.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158909/bettinaswimwear/catalogo/arena/dorado/arena_dorado.png",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Negro",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Azure",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Blanco y Dorado",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Negro",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158920/bettinaswimwear/catalogo/azure/negro/azure_negro.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Rojo",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Verde Oliva",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381247/bettinaswimwear/catalogo/azure/verde_oliva/azure_verde_oliva.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Azure",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
+                    "variantes": [
+                        {
+                            "nombre": "Blanco y Dorado",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Negro",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158920/bettinaswimwear/catalogo/azure/negro/azure_negro.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Rojo",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Verde Oliva",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381247/bettinaswimwear/catalogo/azure/verde_oliva/azure_verde_oliva.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Luna Mare",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Azul y Dorado",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381255/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado.jpg"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
-                                                                "valor": 280000
-                                                },
-                                                {
-                                                                "nombre": "Dorado",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png",
-                                                                "valor": 280000
-                                                },
-                                                {
-                                                                "nombre": "Gris",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg",
-                                                                "valor": 280000
-                                                }
-                                ]
+                    "nombre": "Luna Mare",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                    "variantes": [
+                        {
+                            "nombre": "Azul y Dorado",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381255/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado.jpg"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                            "valor": 280000
+                        },
+                        {
+                            "nombre": "Dorado",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png",
+                            "valor": 280000
+                        },
+                        {
+                            "nombre": "Gris",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg",
+                            "valor": 280000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Perla",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Perla",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381285/bettinaswimwear/catalogo/perla/perla/perla_1.png",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158938/bettinaswimwear/catalogo/perla/perla/perla.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Perla",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                    "variantes": [
+                        {
+                            "nombre": "Perla",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381285/bettinaswimwear/catalogo/perla/perla/perla_1.png",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158938/bettinaswimwear/catalogo/perla/perla/perla.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Palma",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Blanco",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158942/bettinaswimwear/catalogo/palma/verde_oliva/palma.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Palma",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
+                    "variantes": [
+                        {
+                            "nombre": "Blanco",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158942/bettinaswimwear/catalogo/palma/verde_oliva/palma.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Saint",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Azul",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Terracota",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158947/bettinaswimwear/catalogo/saint/terracota/saint.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158947/bettinaswimwear/catalogo/saint/terracota/saint.png",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Saint",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
+                    "variantes": [
+                        {
+                            "nombre": "Azul",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
+                            "valor": 250000
+                        },
+                        {
+                            "nombre": "Terracota",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158947/bettinaswimwear/catalogo/saint/terracota/saint.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158947/bettinaswimwear/catalogo/saint/terracota/saint.png",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Marina",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Verde",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Marina",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png",
+                    "variantes": [
+                        {
+                            "nombre": "Verde",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158951/bettinaswimwear/catalogo/marina/verde/marina_verde.png",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Bendita",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Rosado",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png",
-                                                                "valor": 300000
-                                                }
-                                ]
+                    "nombre": "Bendita",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png",
+                    "variantes": [
+                        {
+                            "nombre": "Rosado",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158954/bettinaswimwear/catalogo/bendita/rosado/bendita_rosado.png",
+                            "valor": 300000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Coconut",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Única referencia",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Coconut",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
+                    "variantes": [
+                        {
+                            "nombre": "Única referencia",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Marfil",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Única referencia",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Marfil",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg",
+                    "variantes": [
+                        {
+                            "nombre": "Única referencia",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/marfil/unico/marfil.jpg",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Sirena",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Única referencia",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Sirena",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg",
+                    "variantes": [
+                        {
+                            "nombre": "Única referencia",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158957/bettinaswimwear/catalogo/sirena/unico/sirena.jpg",
+                            "valor": 250000
+                        }
+                    ]
                 },
                 {
-                                "nombre": "Solea",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png",
-                                "variantes": [
-                                                {
-                                                                "nombre": "Única referencia",
-                                                                "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png",
-                                                                "valor": 250000
-                                                }
-                                ]
+                    "nombre": "Solea",
+                    "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png",
+                    "variantes": [
+                        {
+                            "nombre": "Única referencia",
+                            "fotos": [
+                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png"
+                            ],
+                            "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158960/bettinaswimwear/catalogo/solea/unico/solea.png",
+                            "valor": 250000
+                        }
+                    ]
                 }
-]
+            ]
         };
 
         let categoriaActiva = null;
@@ -831,9 +1110,9 @@
             }
 
             contenedor.innerHTML = appData.categorias.map((cat, index) => {
-              const count = cat.variantes ? cat.variantes.length : 0;
-              const textoBadge = count === 1 ? '1 opción' : `${count} opciones`;
-              return `
+                const count = cat.variantes ? cat.variantes.length : 0;
+                const textoBadge = count === 1 ? '1 opción' : `${count} opciones`;
+                return `
               <div class="card-categoria" onclick="abrirCategoria(${index})">
                 <img class="banner" src="${parseImg(cat.refImg, 600)}" alt="${cat.nombre}" loading="lazy">
                 <div class="cat-header">
@@ -841,7 +1120,8 @@
                   <span class="badge">${textoBadge}</span>
                 </div>
               </div>
-            `;}).join('');
+            `;
+            }).join('');
         }
 
         function precargarTodoElCatalogo() {
@@ -873,7 +1153,7 @@
                 if (video.src) return;
                 video.src = video.dataset.src;
                 video.load();
-                video.play().catch(() => {});
+                video.play().catch(() => { });
             };
 
             if ('IntersectionObserver' in window) {
@@ -945,7 +1225,7 @@
             if (imgEl) imgEl.classList.add('cargando');
 
             document.getElementById('lbl-categoria').textContent = categoriaActiva.nombre;
-            
+
             const variantes = categoriaActiva.variantes || [];
             if (variantes.length > 0) {
                 document.getElementById('grid-miniaturas').innerHTML = variantes.map((v, index) => `
@@ -953,7 +1233,7 @@
                 `).join('');
 
                 seleccionarVariante(0);
-                
+
                 // Mostrar el falso interstitial sobre la página conservando la posición de scroll
                 const modal = document.getElementById('vista-detalle');
                 if (modal) {
@@ -1000,10 +1280,10 @@
             fotoActualIndex = 0;
             usuarioIntervinoSlide = false;
             const config = appData.config || { telefono: '573116504321', mensajeBase: 'Hola, me interesa' };
-            
+
             document.getElementById('lbl-nombre').textContent = variante.nombre;
             document.getElementById('lbl-precio').textContent = formatoCOP.format(variante.valor);
-            
+
             // Armado seguro de URL con codificación completa
             const textoWA = `${config.mensajeBase} ${categoriaActiva.nombre} - ${variante.nombre} (${formatoCOP.format(variante.valor)})`;
             document.getElementById('btn-whatsapp').href = `https://wa.me/${config.telefono}?text=${encodeURIComponent(textoWA)}`;
@@ -1028,7 +1308,7 @@
             if (!imgEl) return;
 
             const nuevaSrc = parseImg(fotos[fotoActualIndex], 800);
-            
+
             // Si ya está mostrando esa misma URL y no está en proceso de carga, solo actualizar dots
             if (imgEl.src === nuevaSrc && !imgEl.classList.contains('cargando')) {
                 document.querySelectorAll('.slide-dot').forEach((dot, i) => {
@@ -1148,4 +1428,5 @@
         document.addEventListener('DOMContentLoaded', inicializarCatalogo);
     </script>
 </body>
+
 </html>

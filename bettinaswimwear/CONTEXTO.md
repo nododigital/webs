@@ -53,6 +53,7 @@
 ### Video de Fondo (Loop Decorativo)
 * **Video Activo:** `Chica_bailando_en_el_escenario_fd62bf7f.mp4` subido a Cloudinary (`v1794592839`).
 * **Optimización:** Transformación `q_auto,w_1280` pasando de 3.51 MB a **0.95 MB (-72.9%)**.
+* **Encuadre y Posicionamiento:** Contenedor a `h-[60dvh]` con `object-cover` y punto focal vertical fijado con precisión exacta al **62%** (`object-position: center 62% !important`).
 * **Carga Diferida:** Atributos `preload="none"` y activación mediante `IntersectionObserver` (`rootMargin: 300px`), evitando que el video compita con la carga inicial de fotos.
 
 ### Tipografía y Código
