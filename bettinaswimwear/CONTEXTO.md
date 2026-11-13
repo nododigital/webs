@@ -60,7 +60,10 @@
 
 1. **REGLA ABSOLUTA DE CARPETAS PROTEGIDAS:**
    * **NUNCA tocar, leer, sobrescribir ni modificar las carpetas `backup/` y `copy/`**. Son intocables.
-2. **Sistema de Diseño (*Quiet Luxury* / *Earthy Premium*):**
+2. **REGLA ESTRICTA DE CONTROL DE VERSIONES (GIT):**
+   * **NUNCA ejecutar `git add`, `git commit` ni `git push` por iniciativa propia.**
+   * Todas las operaciones de Git son directrices exclusivas del usuario y solo se ejecutarán si se solicita de manera explícita.
+3. **Sistema de Diseño (*Quiet Luxury* / *Earthy Premium*):**
    * **Paleta:**
      * `--bg-cream: #F2EFEA;` (Fondo y tarjetas modales)
      * `--primary-olive: #7A7258;` (Detalles y badges)
@@ -77,5 +80,3 @@
 
 1. **Validación en Dispositivo Móvil:**
    * Confirmar en el Galaxy S23 Ultra que la visualización del modal despliega el botón de WhatsApp holgadamente en el primer plano.
-2. **Control de Versiones (Git):**
-   * Realizar commit y push a GitHub (`git push origin main`) con los cambios de la grilla (4 desktop / 2 mobile) y el ajuste de altura del modal de detalle.
