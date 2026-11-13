@@ -8,6 +8,10 @@
 ## 1. Estado Actual y Cambios Recientes (Lo que ya está hecho)
 
 ### Catálogo de Referencias y Variantes
+* **Grilla Responsive (4 columnas Desktop / 2 columnas Mobile):**
+  * **Desktop (laptops 1366px y pantallas >= 1024px):** 4 columnas por fila. Las 12 referencias se distribuyen exactamente en **3 filas de 4 columnas**.
+  * **Mobile:** 2 columnas por fila. Las 12 referencias se distribuyen en **6 filas de 2 columnas**.
+  * **Escala Visual Adaptativa:** Alturas de banner proporcionales (`220px` móvil, `280px` tablet, `340px` desktop) y cabeceras de tarjeta (`.cat-header`) optimizadas para que los títulos y badges no colisionen en pantallas estrechas.
 * **Migración y Estructura:** Se migró el catálogo de Sanity a Cloudinary (`cloud_name: juf33buk`). Se estructuraron 12 referencias oficiales (`Arena`, `Azure`, `Luna Mare`, `Perla`, `Palma`, `Saint`, `Marina`, `Bendita`, `Coconut`, `Marfil`, `Sirena`, `Solea`) con 20 variantes y 27 fotos en total.
 * **Resolución de Nombres en Cloudinary:** Carga sin colisiones de nombres usando sufijos descriptivos (`arena_azul_editorial` vs `arena_azul_catalogo`) bajo `bettinaswimwear/catalogo/{ref}/{variante}/`. Mapeo respaldado en `E:\Carpetas\Descargas\catalogo_bettina\catalogo_cloudinary.json`.
 * **Esquema de Precios:**
@@ -20,6 +24,11 @@
 ### Navegación y UX: Falso Interstitial / Modal de Detalle
 * **Preservación Total del Scroll:** La grilla principal (`#vista-inicio`) nunca se oculta (`display: none`) ni se resetea al hacer scroll.
 * **Capa Elevada:** Al pulsar una referencia, se abre `#vista-detalle` como un modal a pantalla completa en móviles y una tarjeta flotante centrada con fondo desenfocado (`backdrop-filter: blur(8px)`) en desktop.
+* **Optimización Visual Mobile (Above-the-Fold en Galaxy S23 Ultra y móviles):**
+  * Basado en la captura real del Galaxy S23 Ultra, se ajustaron las alturas y márgenes verticales del modal para que el botón de WhatsApp (*"Quiero este modelo"*) quede **100% visible en el viewport inicial**, sin quedar recortado ni exigir scroll al usuario.
+  * `.visor-imagen` en móvil ajustado a `height: 32vh; min-height: 190px; max-height: 265px;` (previamente `42vh`).
+  * Ritmo vertical compacto en móvil: `.modal-dialog` padding `0.75rem 1rem`, `.modal-header-nav` márgenes reducidos, tipografía del bloque de texto principal ajustada armónicamente (`h2` a `1.5rem`, precio a `1.3rem`), miniaturas a `56px` y botón WA con padding `0.7rem 1rem` y `border-radius: 6px`.
+  * La altura total del contenido en móvil pasó de ~730px a ~510px, garantizando visibilidad inmediata sobre cualquier pantalla móvil moderna ($\ge 600$px).
 * **Sincronización con Botón "Atrás" (`History API`):** Al abrir una referencia se añade `#ref-nombre` al historial. Si el usuario presiona el botón "Atrás" o usa el gesto táctil del teléfono, el modal se cierra fluidamente sin sacarlo del sitio web.
 * **Cierres Adicionales:** Botón *"← Volver a referencias"*, botón de cierre `✕`, tecla `Escape` o clic fuera del modal.
 
@@ -66,10 +75,7 @@
 
 ## 3. Pendientes Inmediatos
 
-1. **Revisión Final del Cliente:**
-   * Validar el nuevo video decorativo en bucle (`Chica_bailando_en_el_escenario...`).
-   * Validar el aspecto editorial con la tipografía **EB Garamond** y el comportamiento del autoplay de fotos a los 3 segundos.
+1. **Validación en Dispositivo Móvil:**
+   * Confirmar en el Galaxy S23 Ultra que la visualización del modal despliega el botón de WhatsApp holgadamente en el primer plano.
 2. **Control de Versiones (Git):**
-   * Preparar `git add index.html style.css CONTEXTO.md`, realizar commit y subir a GitHub (`git push origin main`).
-3. **Optimizaciones Futuras (según requerimiento):**
-   * Agregar nuevas fotos o variantes editoriales cuando el cliente proporcione material adicional.
+   * Realizar commit y push a GitHub (`git push origin main`) con los cambios de la grilla (4 desktop / 2 mobile) y el ajuste de altura del modal de detalle.
