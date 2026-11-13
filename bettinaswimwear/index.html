@@ -102,16 +102,11 @@
         
         .card-categoria img.banner {
             width: 100%;
-            height: 220px;
+            aspect-ratio: 1 / 1;
+            height: auto;
             object-fit: cover;
             display: block;
             background: #f1f5f9;
-        }
-        @media (min-width: 640px) {
-            .card-categoria img.banner { height: 280px; }
-        }
-        @media (min-width: 1024px) {
-            .card-categoria img.banner { height: 340px; }
         }
 
         .cat-header {
@@ -279,16 +274,43 @@
 
         .layout-detalle { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
         @media (min-width: 900px) {
-          .layout-detalle { grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
-          .modal-dialog .visor-imagen { height: 58vh; max-height: 520px; }
+          .layout-detalle { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
         }
 
-        /* Ajuste crítico de altura y prevención de Layout Shift (CLS) */
-        .visor-imagen { position: relative; width: 100%; height: 32vh; min-height: 190px; max-height: 265px; border-radius: 8px; overflow: hidden; background: #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); contain: layout paint; }
-        @media (min-width: 900px) {
-          .visor-imagen { height: 75vh; max-height: 600px; border-radius: 10px; }
+        /* Interstitial / Modal: Visor con proporción cuadrada exacta (1:1) */
+        .visor-imagen {
+            position: relative;
+            width: 100%;
+            max-width: min(100%, 35vh, 300px);
+            aspect-ratio: 1 / 1;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            contain: layout paint;
         }
-        .visor-imagen img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+        @media (min-width: 900px) {
+          .modal-dialog .visor-imagen,
+          .visor-imagen {
+              max-width: 460px;
+              max-height: 460px;
+              height: auto;
+              border-radius: 10px;
+          }
+        }
+        .visor-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            transition: opacity 0.12s ease-out;
+        }
+        .visor-imagen img.cargando {
+            opacity: 0;
+        }
         .slide-controles { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: space-between; padding: 0 0.5rem; }
         .btn-slide { pointer-events: auto; width: 34px; height: 34px; border-radius: 50%; background: rgba(45, 43, 38, 0.45); color: #F2EFEA; border: 1px solid rgba(242, 239, 234, 0.4); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; line-height: 1; cursor: pointer; transition: all 0.2s ease; user-select: none; }
         .btn-slide:hover { background: rgba(122, 114, 88, 0.9); border-color: #F2EFEA; transform: scale(1.08); }
@@ -441,7 +463,7 @@
             webkit-playsinline 
             preload="none"
             class="absolute inset-0 w-full h-full object-cover object-[center_65%] opacity-90"
-            data-src="https://res.cloudinary.com/juf33buk/video/upload/q_auto,w_1280/v1794373811/Chica_bailando_en_el_escenario_4c95b02a.mp4"
+            data-src="https://res.cloudinary.com/juf33buk/video/upload/q_auto,w_1280/v1794592839/Chica_bailando_en_el_escenario_fd62bf7f.mp4"
         >
         </video>
         
@@ -555,15 +577,15 @@
             categorias: [
                 {
                                 "nombre": "Arena",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794161347/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Azul",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794161347/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794161348/bettinaswimwear/catalogo/arena/azul/arena_azul_catalogo.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381178/bettinaswimwear/catalogo/arena/azul/arena_azul_catalogo.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794161347/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381176/bettinaswimwear/catalogo/arena/azul/arena_azul_editorial.jpg",
                                                                 "valor": 250000
                                                 },
                                                 {
@@ -577,89 +599,96 @@
                                                 {
                                                                 "nombre": "Negro",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158912/bettinaswimwear/catalogo/arena/negro/arena_negro.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158912/bettinaswimwear/catalogo/arena/negro/arena_negro.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590805/bettinaswimwear/catalogo/arena/negro/arena_negro.jpg",
                                                                 "valor": 250000
                                                 }
                                 ]
                 },
                 {
                                 "nombre": "Azure",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158914/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Blanco y Dorado",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158914/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158914/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381184/bettinaswimwear/catalogo/azure/blanco_y_dorado/azure_blanco_y_dorado.png",
                                                                 "valor": 250000
                                                 },
                                                 {
                                                                 "nombre": "Negro",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158917/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
                                                                                 "https://res.cloudinary.com/juf33buk/image/upload/v1794158920/bettinaswimwear/catalogo/azure/negro/azure_negro.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158917/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381188/bettinaswimwear/catalogo/azure/negro/azure_negro_foto.jpg",
                                                                 "valor": 250000
                                                 },
                                                 {
                                                                 "nombre": "Rojo",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158922/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158922/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381216/bettinaswimwear/catalogo/azure/rojo/azure_rojo.png",
                                                                 "valor": 250000
                                                 },
                                                 {
                                                                 "nombre": "Verde Oliva",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158925/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.png",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158927/bettinaswimwear/catalogo/azure/verde_oliva/azure_verde_oliva.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381247/bettinaswimwear/catalogo/azure/verde_oliva/azure_verde_oliva.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158925/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381236/bettinaswimwear/catalogo/azure/verde_oliva/azure_verdde_oliva.jpg",
                                                                 "valor": 250000
                                                 }
                                 ]
                 },
                 {
                                 "nombre": "Luna Mare",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158928/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Azul y Dorado",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158928/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158929/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado.jpg"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381255/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado.jpg"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158928/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381250/bettinaswimwear/catalogo/luna_mare/azul_y_dorado/luna_mare_azul_y_dorado_1.jpg",
                                                                 "valor": 280000
                                                 },
                                                 {
                                                                 "nombre": "Dorado",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158931/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158932/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_foto.jpg"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158931/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381269/bettinaswimwear/catalogo/luna_mare/dorado/luna_mare_dorado_sin_pareo.png",
+                                                                "valor": 280000
+                                                },
+                                                {
+                                                                "nombre": "Gris",
+                                                                "fotos": [
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg"
+                                                                ],
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794590345/bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg",
                                                                 "valor": 280000
                                                 }
                                 ]
                 },
                 {
                                 "nombre": "Perla",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158933/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Perla",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158933/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158935/bettinaswimwear/catalogo/perla/perla/perla_1.png",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381285/bettinaswimwear/catalogo/perla/perla/perla_1.png",
                                                                                 "https://res.cloudinary.com/juf33buk/image/upload/v1794158938/bettinaswimwear/catalogo/perla/perla/perla.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158933/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381276/bettinaswimwear/catalogo/perla/perla/perla_y_acesiorios.jpg",
                                                                 "valor": 250000
                                                 }
                                 ]
@@ -669,33 +698,26 @@
                                 "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
                                 "variantes": [
                                                 {
-                                                                "nombre": "Rosado",
+                                                                "nombre": "Blanco",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png"
-                                                                ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
-                                                                "valor": 250000
-                                                },
-                                                {
-                                                                "nombre": "Verde Oliva",
-                                                                "fotos": [
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
                                                                                 "https://res.cloudinary.com/juf33buk/image/upload/v1794158942/bettinaswimwear/catalogo/palma/verde_oliva/palma.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158942/bettinaswimwear/catalogo/palma/verde_oliva/palma.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158940/bettinaswimwear/catalogo/palma/rosado/palm.png",
                                                                 "valor": 250000
                                                 }
                                 ]
                 },
                 {
                                 "nombre": "Saint",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158944/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Azul",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158944/bettinaswimwear/catalogo/saint/azul/saint_azul.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158944/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381339/bettinaswimwear/catalogo/saint/azul/saint_azul.png",
                                                                 "valor": 250000
                                                 },
                                                 {
@@ -738,14 +760,14 @@
                 },
                 {
                                 "nombre": "Coconut",
-                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794158956/bettinaswimwear/catalogo/coconut/unico/coconut.png",
+                                "refImg": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
                                 "variantes": [
                                                 {
                                                                 "nombre": "Única referencia",
                                                                 "fotos": [
-                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794158956/bettinaswimwear/catalogo/coconut/unico/coconut.png"
+                                                                                "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png"
                                                                 ],
-                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794158956/bettinaswimwear/catalogo/coconut/unico/coconut.png",
+                                                                "refFoto": "https://res.cloudinary.com/juf33buk/image/upload/v1794381411/bettinaswimwear/catalogo/coconut/unico/coconut.png",
                                                                 "valor": 250000
                                                 }
                                 ]
@@ -918,6 +940,10 @@
             categoriaActiva = appData.categorias[indexCategoria];
             if (!categoriaActiva) return;
 
+            // Ocultar preventivamente la imagen anterior para evitar residuos visuales
+            const imgEl = document.getElementById('img-grande');
+            if (imgEl) imgEl.classList.add('cargando');
+
             document.getElementById('lbl-categoria').textContent = categoriaActiva.nombre;
             
             const variantes = categoriaActiva.variantes || [];
@@ -993,17 +1019,47 @@
             iniciarAutoSlide();
         }
 
+        let idCargaFotoActual = 0;
+
         function actualizarFotoGrande() {
             if (!varianteActiva) return;
             const fotos = varianteActiva.fotos && varianteActiva.fotos.length > 0 ? varianteActiva.fotos : [varianteActiva.refFoto];
             const imgEl = document.getElementById('img-grande');
-            
-            // Cambio instantáneo usando imagen precargada en memoria a w_800
-            imgEl.src = parseImg(fotos[fotoActualIndex], 800);
+            if (!imgEl) return;
 
-            document.querySelectorAll('.slide-dot').forEach((dot, i) => {
-                dot.classList.toggle('activo', i === fotoActualIndex);
-            });
+            const nuevaSrc = parseImg(fotos[fotoActualIndex], 800);
+            
+            // Si ya está mostrando esa misma URL y no está en proceso de carga, solo actualizar dots
+            if (imgEl.src === nuevaSrc && !imgEl.classList.contains('cargando')) {
+                document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+                    dot.classList.toggle('activo', i === fotoActualIndex);
+                });
+                return;
+            }
+
+            const idCarga = ++idCargaFotoActual;
+
+            // Ocultar foto previa inmediatamente para evitar residuos visuales
+            imgEl.classList.add('cargando');
+
+            const imgTemp = new Image();
+            imgTemp.src = nuevaSrc;
+
+            const mostrarNuevaFoto = () => {
+                if (idCarga !== idCargaFotoActual) return;
+                imgEl.src = nuevaSrc;
+                imgEl.classList.remove('cargando');
+                document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+                    dot.classList.toggle('activo', i === fotoActualIndex);
+                });
+            };
+
+            if (imgTemp.decode) {
+                imgTemp.decode().then(mostrarNuevaFoto).catch(mostrarNuevaFoto);
+            } else {
+                imgTemp.onload = mostrarNuevaFoto;
+                imgTemp.onerror = mostrarNuevaFoto;
+            }
         }
 
         function actualizarControlesSlide() {
@@ -1055,6 +1111,17 @@
 
             modal.classList.remove('activa');
             document.body.style.overflow = '';
+
+            // Limpiar foto en segundo plano tras el fade-out para evitar remanentes
+            setTimeout(() => {
+                if (!modal.classList.contains('activa')) {
+                    const imgEl = document.getElementById('img-grande');
+                    if (imgEl) {
+                        imgEl.classList.add('cargando');
+                        imgEl.src = '';
+                    }
+                }
+            }, 250);
 
             // Si se cerró por botón o clic en fondo y aún tenemos el hash activo, volver en historial
             if (!fromPopState && window.location.hash.startsWith('#ref-')) {

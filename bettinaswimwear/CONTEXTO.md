@@ -11,9 +11,14 @@
 * **Grilla Responsive (4 columnas Desktop / 2 columnas Mobile):**
   * **Desktop (laptops 1366px y pantallas >= 1024px):** 4 columnas por fila. Las 12 referencias se distribuyen exactamente en **3 filas de 4 columnas**.
   * **Mobile:** 2 columnas por fila. Las 12 referencias se distribuyen en **6 filas de 2 columnas**.
-  * **Escala Visual Adaptativa:** Alturas de banner proporcionales (`220px` móvil, `280px` tablet, `340px` desktop) y cabeceras de tarjeta (`.cat-header`) optimizadas para que los títulos y badges no colisionen en pantallas estrechas.
-* **Migración y Estructura:** Se migró el catálogo de Sanity a Cloudinary (`cloud_name: juf33buk`). Se estructuraron 12 referencias oficiales (`Arena`, `Azure`, `Luna Mare`, `Perla`, `Palma`, `Saint`, `Marina`, `Bendita`, `Coconut`, `Marfil`, `Sirena`, `Solea`) con 20 variantes y 27 fotos en total.
-* **Resolución de Nombres en Cloudinary:** Carga sin colisiones de nombres usando sufijos descriptivos (`arena_azul_editorial` vs `arena_azul_catalogo`) bajo `bettinaswimwear/catalogo/{ref}/{variante}/`. Mapeo respaldado en `E:\Carpetas\Descargas\catalogo_bettina\catalogo_cloudinary.json`.
+  * **Banners de Tarjetas con Proporción Cuadrada:** Se ajustó `.card-categoria img.banner` a `aspect-ratio: 1 / 1; height: auto;`, mostrando las imágenes en su encuadre 1:1 original sin cortes de cabecera ni laterales.
+* **Actualización de Imágenes Cloudinary (Recorte Cuadrado 1024x1024):** Se actualizaron los campos de imágenes en `appData.categorias` a partir de `catalogo_cloudinary.json`, incorporando las nuevas versiones optimizadas y recortadas a formato cuadrado por el usuario.
+* **Ajustes en Referencias (Imágenes y Variantes):**
+  * **Palma (Unificación a Variante Blanco con Slides):** Se unificaron las variantes "Rosado" y "Verde Oliva" en una sola variante denominada **"Blanco"**, integrando sus 2 fotografías en carrusel deslizable con autoplay.
+  * **Arena (Variante Negro):** Se reemplazó la imagen previa por `Gemini_Generated_Image_b7q0xwb7q0xwb7q0.jfif`, optimizada a $1024 \times 1024$ px y subida a Cloudinary como `bettinaswimwear/catalogo/arena/negro/arena_negro.jpg` (`v1794590805`).
+  * **Luna Mare (Variante Dorado):** Se eliminó la foto secundaria `luna_mare_foto.jpg`, quedando únicamente con `luna_mare_dorado_sin_pareo.png`.
+  * **Luna Mare (Variante Gris):** Se creó la variante "Gris" subiendo a Cloudinary la imagen `LUNA MARE FOTO.jpg` optimizada a $1024 \times 1024$ px (`bettinaswimwear/catalogo/luna_mare/gris/luna_mare_gris.jpg`) con el precio de $280.000 COP.
+* **Migración y Estructura:** Se estructuraron las 12 referencias oficiales (`Arena`, `Azure`, `Luna Mare`, `Perla`, `Palma`, `Saint`, `Marina`, `Bendita`, `Coconut`, `Marfil`, `Sirena`, `Solea`) con 20 variantes y 27 fotos en total.
 * **Esquema de Precios:**
   * **Bendita:** $300.000 COP
   * **Luna Mare:** $280.000 COP
@@ -24,15 +29,18 @@
 ### Navegación y UX: Falso Interstitial / Modal de Detalle
 * **Preservación Total del Scroll:** La grilla principal (`#vista-inicio`) nunca se oculta (`display: none`) ni se resetea al hacer scroll.
 * **Capa Elevada:** Al pulsar una referencia, se abre `#vista-detalle` como un modal a pantalla completa en móviles y una tarjeta flotante centrada con fondo desenfocado (`backdrop-filter: blur(8px)`) en desktop.
-* **Optimización Visual Mobile (Above-the-Fold en Galaxy S23 Ultra y móviles):**
-  * Basado en la captura real del Galaxy S23 Ultra, se ajustaron las alturas y márgenes verticales del modal para que el botón de WhatsApp (*"Quiero este modelo"*) quede **100% visible en el viewport inicial**, sin quedar recortado ni exigir scroll al usuario.
-  * `.visor-imagen` en móvil ajustado a `height: 32vh; min-height: 190px; max-height: 265px;` (previamente `42vh`).
-  * Ritmo vertical compacto en móvil: `.modal-dialog` padding `0.75rem 1rem`, `.modal-header-nav` márgenes reducidos, tipografía del bloque de texto principal ajustada armónicamente (`h2` a `1.5rem`, precio a `1.3rem`), miniaturas a `56px` y botón WA con padding `0.7rem 1rem` y `border-radius: 6px`.
-  * La altura total del contenido en móvil pasó de ~730px a ~510px, garantizando visibilidad inmediata sobre cualquier pantalla móvil moderna ($\ge 600$px).
+* **Visor con Formato Cuadrado Exacto (1:1 Aspect Ratio):**
+  * `.visor-imagen` configurado con `aspect-ratio: 1 / 1; height: auto;`.
+  * **Mobile:** `max-width: min(100%, 35vh, 300px); margin: 0 auto;`. Mantiene la fotografía 100% cuadrada y centrada, al tiempo que preserva la altura total compacta (~530px) para que el botón de WhatsApp (*"Quiero este modelo"*) quede siempre visible sin necesidad de scroll.
+  * **Desktop:** `max-width: 460px; max-height: 460px;` en grilla `1fr 1fr`, presentando la fotografía de producto con máximo detalle y elegancia armónica.
 * **Sincronización con Botón "Atrás" (`History API`):** Al abrir una referencia se añade `#ref-nombre` al historial. Si el usuario presiona el botón "Atrás" o usa el gesto táctil del teléfono, el modal se cierra fluidamente sin sacarlo del sitio web.
 * **Cierres Adicionales:** Botón *"← Volver a referencias"*, botón de cierre `✕`, tecla `Escape` o clic fuera del modal.
 
 ### Visor de Producto, Carrusel y Autoplay
+* **Transición Limpia y Decodificación Asíncrona sin Parpadeo (`img.decode()`):**
+  * Se eliminó el delay/parpadeo de centésimas de segundo donde el navegador mantenía dibujada la imagen previa antes de procesar la nueva en la GPU.
+  * Ocultamiento instantáneo de la foto saliente (`opacity: 0` mediante clase `.cargando`) y revelado suave (`transition: opacity 0.12s`) únicamente cuando la nueva imagen ya está decodificada en memoria gráfica (`await img.decode()`).
+  * En `cerrarDetalle()`, se resetea la imagen en segundo plano tras el fade-out (250ms), garantizando que al abrir cualquier otra referencia nunca haya residuos visuales en el modal.
 * **Autoplay Inteligente:** En variantes con múltiples fotos ($n > 1$), las imágenes rotan automáticamente cada **3 segundos** (`3000 ms`).
 * **Detención por Intervención:** El autoplay se detiene de forma definitiva en cuanto el usuario interviene manualmente (flechas `‹`/`›`, dots inferiores o deslizamiento táctil `touch/swipe`).
 * **Optimización Web (CLS y Caché):** Contenedor `.visor-imagen` con alturas responsive fijas (`42vh` móvil, `58vh` desktop) y `contain: layout paint` para eliminar saltos de maquetación (CLS).
@@ -43,8 +51,8 @@
 * **Diseño Limpio:** Se eliminaron los textos superpuestos (*"Inspirados en la Tierra"* / *"Creados para el Mar"*) y la capa de oscurecimiento artificial, mostrando la fotografía editorial con nitidez y luz natural.
 
 ### Video de Fondo (Loop Decorativo)
-* **Video Activo:** `Chica_bailando_en_el_escenario_4c95b02a.mp4` subido a Cloudinary (`v1794373811`).
-* **Optimización:** Transformación `q_auto,w_1280` pasando de 4.30 MB a **1.08 MB (-75.0%)**.
+* **Video Activo:** `Chica_bailando_en_el_escenario_fd62bf7f.mp4` subido a Cloudinary (`v1794592839`).
+* **Optimización:** Transformación `q_auto,w_1280` pasando de 3.51 MB a **0.95 MB (-72.9%)**.
 * **Carga Diferida:** Atributos `preload="none"` y activación mediante `IntersectionObserver` (`rootMargin: 300px`), evitando que el video compita con la carga inicial de fotos.
 
 ### Tipografía y Código
